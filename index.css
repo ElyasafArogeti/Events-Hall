@@ -38,32 +38,62 @@ h1{
     font-size: 16px;
     border-bottom: 2px solid #ccc;
 }
-.input-field:focus {
+.input-field:focus{
     border-bottom: 2px solid #999;
-    background-color:#cccccc39
+    background-color:#cccccc39;
 }
-
-
-.jumbotron {
-    background-size: cover;
-    color: #252020;
-    text-align: center;
-   height: 200px;
+.input-field:hover{
+    border-bottom: 2px solid #999;
+    background-color:#cccccc39;
+}
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* חצי שקוף */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+.section {
     margin-bottom: 20px;
 }
-
-.container {
-/* display: flex; */
-    margin: 20px auto;
-    padding: 0 20px;
-      text-align: start;
-
+.section h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+.section .item {
+    font-size: 16px;
+    margin-bottom: 5px;
 }
 
-.salad-list{
-margin: 20px;
-font-size: 17px;
 
+.section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+.section ul li {
+    font-size: 16px;
+    margin-bottom: 5px;
+    text-align: right; /* כיווניות טקסט לימין */
+}
+
+.section ul li input {
+    margin-left: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+td {
+    vertical-align: top;
+    padding: 10px;
 }
 #finish{
     padding: 10px 20px;
@@ -75,15 +105,18 @@ font-size: 17px;
   border: none;
   cursor: pointer;  
 }
-
 footer {
     background-color: #333;
     color: #fff;
     text-align: center;
     padding: 20px 0;
 }
-
-
+.menu-item{
+    width: 30px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #ccc;
+}
 
 @media (max-width: 412px) {
     .input-container {
@@ -94,8 +127,8 @@ footer {
     }
     .input-container1{
         display: flex;
-        width: 98%;
-        
+        width: 99%;
+  
     }
     .input-field {
         width: calc(100% - 20px);
@@ -104,17 +137,13 @@ footer {
         font-size: 14px;
     }
     .container {
-
         padding: 0; 
         margin: 0;
     }  
-
-
     .salad-list {
         margin: 2px;
         font-size: 14px;
     }
-    
     footer {
         padding: 10px 0;
         width: 100%;
