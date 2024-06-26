@@ -1,6 +1,6 @@
 const fristFoodPrice = {// מחיר מנה ראשונה 
   "פילה מושט מזרחי מרוקאי": 14.5,
-  "פילה מושט ברוטב לימון ושקדים ": 14.5,
+  "פילה מושט ברוטב לימון ושקדים": 14.5,
   "נסיכת הנילוס מזרחי": 16.5,
   "ארטישוק ממולא בשר": 19,
   "מאפה פילו בשר עם רוטב": 16.5,
@@ -10,8 +10,12 @@ const fristFoodPrice = {// מחיר מנה ראשונה
  "כבדי עוף מוקפצים בבצל על מצע פירה": 86,
  "מוקפץ תאילנדי ברשת או פירה": 65,
  "פילה סלמון ברוטב פסטו": 135,
+ "קדאיף בשר":19,
+ "קראפון אסאדו":100,
+ "קציצות דגים":70
+
 };
-const fristFoodWeight={//משקל מנה ראשונה
+const fristFoodWeight={  //משקל מנה ראשונה
 "פילה מושט מזרחי מרוקאי": 1,
 "פילה מושט ברוטב לימון ושקדים ": 1,
 "נסיכת הנילוס מזרחי": 1,
@@ -23,8 +27,12 @@ const fristFoodWeight={//משקל מנה ראשונה
 "כבדי עוף מוקפצים בבצל על מצע פירה": 100,
 "מוקפץ תאילנדי ברשת או פירה": 100,
 "פילה סלמון ברוטב פסטו": 130,
+"קדאיף בשר":1,
+"קראפון אסאדו":10,
+"קציצות דגים":150
+
 }
-const lestFoodPrice = {///מחיר מנה עיקרית
+const lestFoodPrice = { ///מחיר מנה עיקרית
   "עוף בתנור בשזיפים": 70,
 "עוף בגריל": 70,
   "סטייק פרגית": 110,
@@ -35,8 +43,11 @@ const lestFoodPrice = {///מחיר מנה עיקרית
   "אצבעות אסאדו בסגנון השף": 180,
   "שניצל עוף": 70,
  "כרעיים עוף ממולא": 29.5,
+ "צלי בקר מספר 5":200,
+ "צלי בקר מספר 6":120,
+ "כדורי בשר":67
 };
-const lestFoodWeight = {///משקל מנה עיקרית
+const lestFoodWeight = { ///משקל מנה עיקרית
 "עוף בתנור בשזיפים": 250,
 "עוף בגריל": 250,
 "סטייק פרגית": 110,
@@ -47,6 +58,9 @@ const lestFoodWeight = {///משקל מנה עיקרית
 "אצבעות אסאדו בסגנון השף": 120,
 "שניצל עוף": 120,
 "כרעיים עוף ממולא": 1,
+"צלי בקר מספר 5":120,
+"צלי בקר מספר 6":120,
+"כדורי בשר":120
 };
 const saladsALLPrice = {
 "גזר מרוקאי חי": 29,
@@ -131,6 +145,8 @@ const FoodPlusPrice = {//מחיר תוספות
 "דואט תפו'א ובטטה":20,   
 "בטטה בשמן זית ורוזמרין":30,   
 "קוסקוס עם ירקות":20,    
+"פירה":20,
+"אפונה וגזר":18
 }
 const FoodPlusWeight = {// משקל תוספות
 "אורז עם שקדים וצימוקים":70,
@@ -148,91 +164,213 @@ const FoodPlusWeight = {// משקל תוספות
 "תפו'א פריזיאן שלם":100,   
 "דואט תפו'א ובטטה":80,   
 "בטטה בשמן זית ורוזמרין":100,   
-"קוסקוס עם ירקות":60,    
+"קוסקוס עם ירקות":60,  
+"פירה":100,
+"אפונה וגזר":70  
+}
+function toggleSalads() {
+  var saladList = document.getElementById('salad-list');
+  saladList.classList.toggle('hidden');
 }
 
 document.getElementById('finish').addEventListener('click', function() {
-  // אסף את ערכי שדות הטקסט
+                                                                         // ניקוי הסיכום הקודם אם קיים
+  const existingSummary = document.getElementById('order-summary');
+  if (existingSummary) {
+      existingSummary.remove();
+  }
+
   const eventOwner = document.getElementById('event-owner').value;
   const eventDate = document.getElementById('event-date').value;
   const phoneNumber = document.getElementById('phone-number').value;
   const guestCount = document.getElementById('guest-count').value;
   // הגדרת משתנים לסכום כולל ולסיכום ההזמנה
   let totalCost = 0;
-  let orderSummary = `<h2>פרטי בעל האירוע</h2>
-                      <p>שם בעל האירוע: ${eventOwner}</p>
-                      <p>תאריך האירוע: ${eventDate}</p>
-                      <p>מספר טלפון: ${phoneNumber}</p>
-                      <h2>סיכום הזמנה</h2>`;
+
+
+ let dataSummary=`<h2>פרטי בעל האירוע</h2>
+                      <p>שם בעל האירוע :   <strong>${eventOwner}</strong></p>
+                      <p>תאריך האירוע :  <strong> ${eventDate}</strong></p>
+                      <p>מספר טלפון :  <strong> ${phoneNumber}</strong></p>
+                      <p>מספר המוזמנים :  <strong> ${guestCount}</strong></p>
+                    `
+  let orderSummary = `
+    <table style=
+    " max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* חצי שקוף */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    border-collapse: collapse;">
+                <tr>
+                 <h2 colspan="2">סיכום הזמנה</h2>
+                </tr>
+  `;
   // טיפול בבחירת הסלטים
   const salads = document.querySelectorAll('input[name="salads"]:checked');
   const foodPluses = document.querySelectorAll('input[name="FoodPlus"]:checked');
-  
 
 
-  
-  if (salads.length > 0) {// לסלטים
-      orderSummary += `<h3>סלטים</h3><ul>`;
+  if (salads.length > 0) {            // לסלטים
+    orderSummary += `
+    <tr>
+      <th colspan="4" style=" border: 1px solid black;
+    padding: 8px;
+    text-align: center;">סלטים</th>
+    </tr>
+  `;
       salads.forEach(salad => {
           const saladName = salad.nextElementSibling.textContent.trim(); 
           console.log(saladName);  // קבל את המחיר והמשקל מאובייקטים שהגדרת מראש
           console.log(saladsALLPrice[saladName]);
           let price = saladsALLPrice[saladName];
           let weight = saladsALLWeight[saladName];
-                  // חשב את סכום הסלט לכל האורחים
-        let sumperson = price/1000 * weight;
-          let sumSalads = sumperson*guestCount;
-          
-          let sumweght = weight*guestCount/1000;
+          // חשב את סכום הסלט לכל האורחים
+          let sumperson = price / 1000 * weight;
+          let sumSalads = sumperson * guestCount;
+          let sumweght = weight * guestCount / 1000;
           totalCost += sumSalads; // הוסף לסכום הכולל
-          orderSummary += `<li>${saladName}  : המחיר הכולל  ${sumSalads} משקל כולל לסלט :   ש'ח ${sumweght}</li>`;
-        });
-        orderSummary += `</ul>`;
+          orderSummary += `
+          <tr>
+            <td>${saladName}</td>
+            <td>המחיר הכולל: ${sumSalads.toFixed(2)} ש"ח, משקל כולל לסלט: ${sumweght.toFixed(2)} ק"ג</td>
+        `;
+      });
+    
   }
-                                 // טיפול בבחירת התוספות
+  
+                                  // טיפול בבחירת התוספות
   if (foodPluses.length > 0) {
-    orderSummary += `<h3>תוספות</h3><ul>`;
+    orderSummary += `
+    <tr>
+      <th colspan="4" style=" border: 1px solid black;
+    padding: 8px;
+    text-align: center;">תוספות</th>
+    </tr>
+  `;
     foodPluses.forEach(foodPlus => {
         const foodPlusName = foodPlus.nextElementSibling.textContent.trim();
         let price = FoodPlusPrice[foodPlusName];
         let weight = FoodPlusWeight[foodPlusName];
-         // חשב את סכום התוספת לכל האורחים
         let sumperson = price / 1000 * weight;
         let sumFoodPlus = sumperson * guestCount;
         let sumWeight = weight * guestCount / 1000;
         totalCost += sumFoodPlus; // הוסף לסכום הכולל
-        orderSummary += `<li>${foodPlusName} : המחיר הכולל ${sumFoodPlus} ש"ח, משקל כולל לתוספת: ${sumWeight} ק"ג</li>`;
+        orderSummary += `
+        <tr>
+          <td>${foodPlusName}</td>
+          <td>המחיר הכולל: ${sumFoodPlus.toFixed(2)} ש"ח, משקל כולל לתוספת: ${sumWeight.toFixed(2)} ק"ג</td>
+        </tr>
+      `;
     });
-    orderSummary += `</ul>`;
-}
+  }
 
+                                           // טיפול במנה ראשונה 
+  const firstFoodItems = document.querySelectorAll('input[name="firstFood"]');
+  const specialItems = ["פילה סלמון ברוטב פסטו", "כבדי עוף מוקפצים בבצל על מצע פירה", "מעורב ירושלמי במצע פירה", "מוקפץ תאילנדי ברשת או פירה", "קציצות דגים"];
+  const selectedItems = Array.from(firstFoodItems)
+    .filter(item => item.type === 'number' && !isNaN(item.value) && item.value > 0)
+    .map(item => ({
+        id: item.id,
+        name: item.dataset.name,
+        value: parseInt(item.value),
+        price: parseFloat(item.dataset.price),
+        weight: parseFloat(item.dataset.weight)
+    }));
 
-menuItems.forEach(item => {
-  const itemName = item.nextElementSibling.textContent.trim(); // שם הפריט מהתווית הבאה
-  console.log(itemName);
-  const itemPrice = fristFoodPrice[itemName]; // המחיר של הפריט מהמאגר הנתונים
-  const itemWeight = fristFoodWeight[itemName]; // משקל הפריט
-  let sumperson = itemPrice * item;
-  let sumFoodPlus = sumperson * guestCount;
-  let sumWeight = weight * guestCount / 1000;
-  totalCost += sumFoodPlus; // הוסף לסכום הכולל
-  
-  
+  if (selectedItems.length > 0) { // חישוב מנה ראשונה 
+    orderSummary += `
+    <tr>
+      <th colspan="2" style=" border: 1px solid black;
+    padding: 8px;
+    text-align: center;">מנה ראשונה [3 לבחירה]</th>
+    </tr>
+  `;
+      selectedItems.forEach(valuefood => {
+          const foodName = valuefood.name;
+          let price = fristFoodPrice[foodName];
+          let weight = valuefood.value;
+          if (specialItems.includes(foodName)) {
+              // חישוב מיוחד עבור פריטים לפי גרם
+              let sum = fristFoodPrice[foodName] / fristFoodWeight[foodName];
+              let sumpersonFoodFrist = sum * weight; // חשב את סכום המנה לכל האורחים לפי גרם
+              totalCost += sumpersonFoodFrist; // הוסף לסכום הכולל
+              orderSummary += `
+              <tr>
+                <td>${foodName}</td>
+                <td>המחיר הכולל: ${sumpersonFoodFrist.toFixed(2)} ש"ח, משקל כולל מנה ראשונה: ${weight.toFixed(2)} גרם</td>
+              </tr>
+            `;
+          } else {
+              // חישוב רגיל עבור פריטים לפי יחידות
+              let sumpersonFoodFrist = price * weight; // חשב את סכום המנה לכל האורחים
+              totalCost += sumpersonFoodFrist; // הוסף לסכום הכולל
+              orderSummary += `
+              <tr>
+                <td>${foodName}</td>
+                <td>המחיר הכולל: ${sumpersonFoodFrist} ש"ח, משקל כולל מנה ראשונה: ${weight} יחידות</td>
+              </tr>
+            `;
+          }
+      });
+   
+  }
 
+                                     // מנה עיקרית 
+  const mainFoodItems = document.querySelectorAll('input[name="mainFood"]');
+  const selectedItemsmain = Array.from(mainFoodItems)// מערך של כל הפריטים שנבחרו 
+    .filter(item => item.type === 'number' && !isNaN(item.value) && item.value > 0)
+    .map(item => ({
+        id: item.id,
+        name: item.dataset.name,
+        value: parseInt(item.value),
+        price: parseFloat(item.dataset.price),
+        weight: parseFloat(item.dataset.weight)
+    }));
+
+  if (selectedItemsmain.length > 0) { // חישוב מנה עיקרית יחידות
+    orderSummary += `
+    <tr>
+      <th colspan="2" style=" border: 1px solid black;
+    padding: 8px;
+    text-align: center;">מנה עיקרית [3 לבחירה]</th>
+    </tr>
+  `;
+    selectedItemsmain.forEach(valuefood => {
+        const foodName = valuefood.name;
+        let sum = lestFoodPrice[foodName] / lestFoodWeight[foodName];
+        let weight = valuefood.value;
+        // חישוב מיוחד עבור פריטים לפי גרם
+        let sumpersonlestFrist = sum * weight; // חשב את סכום המנה לכל האורחים לפי גרם
+        totalCost += sumpersonlestFrist; // הוסף לסכום הכולל
+        orderSummary += `
+          <tr>
+            <td>${foodName}</td>
+            <td>המחיר הכולל: ${sumpersonlestFrist.toFixed(2)} ש"ח, משקל כולל מנה עיקרית: ${weight.toFixed(2)} גרם</td>
+          </tr>
+        `;
+    });
+  }
+
+ 
+
+           // הוספת הסיכום למסמך
+  const summaryDiv = document.querySelector("#Order-summary");
+  const DivdataSummary = document.querySelector("#data-summary");
+ 
+  summaryDiv.innerHTML = orderSummary+`<h3>סה"כ עלות האירוע: ${totalCost} ש"ח</h3>`;
+  DivdataSummary.innerHTML = dataSummary;
+    // הצגת עלות האירוע הכוללת
+    
 });
+document.getElementById('finish2').addEventListener('click', function(){
+ 
+ })
+      
 
-
-
-
-  
-  // הצגת עלות האירוע הכוללת
-  orderSummary += `<h3>סה"כ עלות האירוע: ${totalCost} ש"ח</h3>`;
-
-  // הוספת הסיכום למסמך
-  const summaryDiv = document.createElement('div');
-  summaryDiv.innerHTML = orderSummary;
-  document.body.appendChild(summaryDiv);
-
-
-
-});
+ document.getElementById('finish3').addEventListener('click', function(){
+  window.print();
+ })
+      

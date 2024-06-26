@@ -2,16 +2,12 @@ body {
    width: 100%;
     height: 100%;  
     font-family: Arial, sans-serif;
+    background-color: rgb(235, 234, 232);
     margin: 0;
     padding: 0;
  text-align: center;
-    /* background-size: cover;
-    Background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: center; */
 }
 header {
-    background-image: url("https://alegriaevent.co.il/wp-content/uploads/2017/06/%D7%90%D7%95%D7%9C%D7%9E%D7%95%D7%AA-%D7%90%D7%99%D7%A8%D7%95%D7%A2%D7%99%D7%9D-%D7%91%D7%90%D7%A9%D7%93%D7%95%D7%93.jpg");
     background-size: 60%;
     color: #fff;
     height: 90px;
@@ -19,7 +15,11 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+}
+#img{
+    width: 900px;
+    height: 300px;
+    border-radius: 20px;
 }
 h1{
     margin: 0;
@@ -36,10 +36,13 @@ h1{
     border: none;
     outline: none;
     font-size: 16px;
-    border-bottom: 2px solid #ccc;
+    border-bottom: 2px solid #babab8;
+    background-color:rgb(235, 234, 232);
+
+
 }
 .input-field:focus{
-    border-bottom: 2px solid #999;
+    border-bottom: 2px solid #999999;
     background-color:#cccccc39;
 }
 .input-field:hover{
@@ -58,6 +61,18 @@ h1{
 .section {
     margin-bottom: 20px;
 }
+.toggle-button {
+    font-size: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.hidden {
+     display: none;
+}
+.s{
+    display: none;
+}
 .section h2 {
     font-size: 20px;
     margin-bottom: 10px;
@@ -68,7 +83,6 @@ h1{
     font-size: 16px;
     margin-bottom: 5px;
 }
-
 
 .section ul {
     list-style: none;
@@ -100,7 +114,27 @@ td {
   font-size: 20px;
   width: 50%;
   border-radius: 5px;
-  background-color: #055bb7;
+  background-color: #205791;
+  color: #fff;
+  border: none;
+  cursor: pointer;  
+}
+#finish2{
+    padding: 10px 20px;
+  font-size: 20px;
+  width: 50%;
+  border-radius: 5px;
+  background-color: #686d72;
+  color: #fff;
+  border: none;
+  cursor: pointer;  
+}
+#finish3{
+    padding: 10px 20px;
+  font-size: 20px;
+  width: 50%;
+  border-radius: 5px;
+  background-color: #61676eaf;
   color: #fff;
   border: none;
   cursor: pointer;  
@@ -112,41 +146,68 @@ footer {
     padding: 20px 0;
 }
 .menu-item{
-    width: 30px;
+    width: 45px;
     border: none;
     outline: none;
     border-bottom: 2px solid #ccc;
 }
 
+.dataTabke {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* חצי שקוף */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+    display: none;
+    
+  }
+
+  #dataTabkeHeader{
+    font-size: 30px;
+    font-weight: bold;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .dataTabke th,
+  .dataTabke td {
+    border: 2px solid black;
+    padding: 8px;
+    text-align: center;
+  }
+
+/* מדיה קוורי לרוחב מסך של 412px */
 @media (max-width: 412px) {
-    .input-container {
-      padding: 0;
-      margin: 0;
-        display: block;
-     width: 40%;
+    .container, .dataTabke {
+        padding: 10px; /* צמצום הפדינג */
     }
-    .input-container1{
-        display: flex;
-        width: 99%;
-  
+    .input-container {
+        padding: 10px; /* צמצום הפדינג */
     }
     .input-field {
-        width: calc(100% - 20px);
-        margin-right: 3;
-        margin-bottom: 10px;
-        font-size: 14px;
+        margin-right: 10px; /* צמצום המרגין */
     }
-    .container {
-        padding: 0; 
-        margin: 0;
-    }  
-    .salad-list {
-        margin: 2px;
-        font-size: 14px;
+    #finish, #finish2, #finish3 {
+        font-size: 18px; /* צמצום גודל הטקסט */
     }
-    footer {
-        padding: 10px 0;
+    #dataTabkeHeader {
+        font-size: 24px; /* צמצום גודל הטקסט */
+    }
+    .dataTabke th,
+    .dataTabke td {
+        padding: 5px; /* צמצום הפדינג */
+    }
+    #img{
         width: 100%;
-        font-size: 14px;
+        height: 150px;
+        border-radius: 20px;
     }
+    .section ul li {
+    font-size: 16px;
+    margin-bottom: 2px;
+    text-align: right; /* כיווניות טקסט לימין */
+}
+
+
 }

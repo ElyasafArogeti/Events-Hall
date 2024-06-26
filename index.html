@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event Design Website</title>
     <link rel="stylesheet" href="./index.css" />
+    
 </head>
 <body dir="rtl">
-    <header>
-        <h1>אולמי הפנינה</h1>
-    </header>
-    <br />
-
+  <br>
+      <img src="./poto/4.png" id="img">
+    <h2>פרטי בעל ההזמנה</h2>
+    <br/>
     <div dir="rtl" class="input-container1">
         <input type="text" class="input-field" placeholder="שם בעל האירוע" id="event-owner" />
         <input type="date" class="input-field" placeholder="תאריך " id="event-date" />
@@ -34,116 +34,139 @@
       </div>
       <table>
           <tr>
-              <td class="section">
+              <td class="section" id="tdSection">
                   <h2>סלטים [8 לבחירה]</h2>
                   <ul class="salads-list">
-                    <li><input type="checkbox" id="salad1" name="salads" value="carrotMoroccanRaw">  <label for="salad1">גזר מרוקאי חי</label>    </li>
-                    <li><input type="checkbox" id="salad2" name="salads" value="carrotMoroccanCooked"> <label for="salad2">גזר מרוקאי מבושל</label> </li>
-                    <li><input type="checkbox" id="salad3" name="salads" value="hummus"><label for="salad3">חומוס עם גרגירי חומוס ושמן זית</label> </li>
-                    <li><input type="checkbox" id="salad4" name="salads" value="tahini">  <label for="salad4">טחינה מתובלת</label> </li>
-                    <li><input type="checkbox" id="salad5" name="salads" value="picklesHomemade"><label for="salad5">חמוצי הבית</label></li>
-                    <li><input type="checkbox" id="salad6" name="salads" value="picklesAssorted">  <label for="salad6">מבחר חמוצים</label>  </li>
-                    <li><input type="checkbox" id="salad7" name="salads" value="lettuceTomatoSprouts"><label for="salad7">חסה, שרי ונבטים ברוטב</label></li>
-                    <li><input type="checkbox" id="salad8" name="salads" value="vegetablesRaw"><label for="salad8">ירקות חי טרי ועשיר</label> </li>
-                    <li><input type="checkbox" id="salad9" name="salads" value="eggplantTahini"> <label for="salad9">חציל שלם עם טחינה</label>   </li>
-                    <li><input type="checkbox" id="salad10" name="salads" value="eggplantGreek"> <label for="salad10">חציל יווני</label>  </li>
-                    <li><input type="checkbox" id="salad11" name="salads" value="eggplantGrilled">  <label for="salad11">חציל טבעי על האש</label>   </li>
-                    <li><input type="checkbox" id="salad12" name="salads" value="eggplantMayonnaise"> <label for="salad12">חציל במיונז</label> </li>
-                    <li><input type="checkbox" id="salad13" name="salads" value="eggplantSpicy">  <label for="salad13">קוביות חציל פקנטי</label> </li>
-                    <li><input type="checkbox" id="salad14" name="salads" value="cabbageDill"><label for="salad14">כרוב ושמיר</label>    </li>
-                    <li><input type="checkbox" id="salad15" name="salads" value="cabbageCarrotMayonnaise"><label for="salad15">כרוב וגזר במיונז</label> </li>
-                    <li><input type="checkbox" id="salad16" name="salads" value="cabbageCarrotSpices"><label for="salad16">כרוב וגזר מטובל</label></li>
-                    <li><input type="checkbox" id="salad17" name="salads" value="redCabbageMayonnaise"><label for="salad17">כרוב אדום במיונז</label></li>
-                    <li><input type="checkbox" id="salad18" name="salads" value="tomatoesSpicy"><label for="salad18">סלט עגבניות חריף</label></li>
-                    <li><input type="checkbox" id="salad18" name="salads" value="tomatoesSpicy">   <label for="salad18">מטבוחה</label> </li>
-                    <li><input type="checkbox" id="salad18" name="salads" value="tomatoesSpicy"><label for="salad18">סלט מלפפון בשמיר</label> </li>
-                    <li><input type="checkbox" id="salad18" name="salads" value="tomatoesSpicy"><label for="salad18">שרי בבזיליקום</label> </li>
-                    <li><input type="checkbox" id="salad18" name="salads" value="tomatoesSpicy"><label for="salad18">פלפל מתוק בצבעים</label> </li>
-                    <li><input type="checkbox" id="salad18" name="salads" value="tomatoesSpicy"><label for="salad18">סלט טבולה</label> </li>
-                    <li><input type="checkbox" id="salad18" name="salads" value="tomatoesSpicy"><label for="salad18">פלפל חריף</label> </li>
-                    <li><input type="checkbox" id="salad18" name="salads" value="tomatoesSpicy"><label for="salad18">שורש סלרי</label> </li>
-                    <li><input type="checkbox" id="salad18" name="salads" value="tomatoesSpicy"><label for="salad18">תירס מקסיקני</label> </li>
-                    <li><input type="checkbox" id="salad18" name="salads" value="tomatoesSpicy"><label for="salad18">תפו'א במיונז</label> </li>
-                    <li><input type="checkbox" id="salad18" name="salads" value="tomatoesSpicy"><label for="salad18">קוביות סלק</label> </li>
-                    <li><input type="checkbox" id="salad18" name="salads" value="tomatoesSpicy"><label for="salad18">סלט בטטה </label> </li>
-                    <li><input type="checkbox" id="salad18" name="salads" value="tomatoesSpicy"><label for="salad18">סלט ירוק</label> </li>
+                    <li><input type="checkbox"name="salads" >  <label for="salad1">גזר מרוקאי חי</label>    </li>
+                    <li><input type="checkbox"name="salads" > <label for="salad2">גזר מרוקאי מבושל</label> </li>
+                    <li><input type="checkbox"name="salads" ><label for="salad3">חומוס עם גרגירי חומוס ושמן זית</label> </li>
+                    <li><input type="checkbox"name="salads" >  <label for="salad4">טחינה מתובלת</label> </li>
+                    <li><input type="checkbox"name="salads" ><label for="salad5">חמוצי הבית</label></li>
+                    <li><input type="checkbox"name="salads" >  <label for="salad6">מבחר חמוצים</label>  </li>
+                    <li><input type="checkbox"name="salads" ><label for="salad7">חסה, שרי ונבטים ברוטב</label></li>
+                    <li><input type="checkbox"name="salads" ><label for="salad8">ירקות חי טרי ועשיר</label> </li>
+                    <li><input type="checkbox"name="salads"> <label for="salad9">חציל שלם עם טחינה</label>   </li>
+                    <li><input type="checkbox" name="salads"> <label for="salad10">חציל יווני</label>  </li>
+                    <li><input type="checkbox" name="salads">  <label for="salad11">חציל טבעי על האש</label>   </li>
+                    <li><input type="checkbox" name="salads"> <label for="salad12">חציל במיונז</label> </li>
+                    <li><input type="checkbox" name="salads">  <label for="salad13">קוביות חציל פקנטי</label></li>
+                    <div id="salad-list" class="salad-list hidden">
+                    <li><input type="checkbox" name="salads" ><label for="salad14">כרוב ושמיר</label>    </li>
+                    <li><input type="checkbox" name="salads"><label for="salad15">כרוב וגזר במיונז</label> </li>
+                    <li><input type="checkbox" name="salads"><label for="salad16">כרוב וגזר מטובל</label></li>
+                    <li><input type="checkbox" name="salads"><label for="salad17">כרוב אדום במיונז</label></li>
+                    <li><input type="checkbox" name="salads"><label for="salad18">סלט עגבניות חריף</label></li>
+                    <li><input type="checkbox" name="salads"><label for="salad18">מטבוחה</label> </li>
+                    <li><input type="checkbox" name="salads"><label for="salad18">סלט מלפפון בשמיר</label> </li>
+                    <li><input type="checkbox" name="salads"><label for="salad18">שרי בבזיליקום</label> </li>
+                    <li><input type="checkbox" name="salads"><label for="salad18">פלפל מתוק בצבעים</label> </li>
+                    <li><input type="checkbox" name="salads"><label for="salad18">סלט טבולה</label> </li>
+                    <li><input type="checkbox" name="salads"><label for="salad18">פלפל חריף</label> </li>
+                    <li><input type="checkbox" name="salads"><label for="salad18">שורש סלרי</label> </li>
+                    <li><input type="checkbox" name="salads"><label for="salad18">תירס מקסיקני</label> </li>
+                    <li><input type="checkbox" name="salads"><label for="salad18">תפו'א במיונז</label> </li>
+                    <li><input type="checkbox" name="salads"><label for="salad18">קוביות סלק</label> </li>
+                    <li><input type="checkbox" name="salads"><label for="salad18">סלט בטטה </label> </li>
+                    <li><input type="checkbox" name="salads"><label for="salad18">סלט ירוק</label> </li>
+                    </div>
+                    <br>
+                    <button class="toggle-button" onclick="toggleSalads()"><img src="./poto/split-vertical.png" width="30px" height="30px"></button>
               </td>
-              <td class="section">
-                  <h2>מנה ראשונה [3 לבחירה]</h2>
-                  <ul>
-                      <li><input type="number" class="menu-item"  name="firstFood"data-price="12" data-weight="250" id="grilled-fish"><label for="grilled-fish">  פילה מושט מזרחי מרוקאי </label></li>
-                      <li><input type="number" class="menu-item" name="firstFood" data-price="15" data-weight="250" id="salmon"><label for="salmon"> פילה מושט ברוטב לימון ושקדים</label></li> <br>
-                      <li><input type="checkbox" class="menu-item" name="firstFood"data-price="10" data-weight="250" id="israeli-salad"><label for="israeli-salad">פילה סלמון ברוטב פסטו </label></li><br>
-                      <li><input type="number" class="menu-item" name="firstFood"data-price="9" data-weight="250" id="beet-carpaccio"><label for="beet-carpaccio">נסיכת הנילוס מזרחי</label></li> <br>
-                      <li><input type="checkbox" class="menu-item" name="firstFood" data-price="8" data-weight="250" id="roasted-eggplant"><label for="roasted-eggplant">מוקפץ תאילנדי ברשת או פירה </label></li><br>
-                      <li><input type="checkbox" class="menu-item" name="firstFood"data-price="7" data-weight="250" id="fried-cauliflower"><label for="fried-cauliflower">מעורב ירושלמי במצע פירה</label></li><br>
-                      <li><input type="number" class="menu-item" name="firstFood"data-price="7" data-weight="250" id="fried-cauliflower"><label for="fried-cauliflower"></label>ארטישוק ממולא בשר </li>
-                      <li><input type="number" class="menu-item" name="firstFood"data-price="7" data-weight="250" id="fried-cauliflower"><label for="fried-cauliflower">מאפה פילו בשר עם רוטב </label></li><br>
-                      <li><input type="checkbox" class="menu-item" name="firstFood"data-price="7" data-weight="250" id="fried-cauliflower"><label for="fried-cauliflower">כבדי עוף מוקפצים בבצל על מצע פירה </label></li>
-                      <li><input type="number" class="menu-item"name="firstFood" data-price="7" data-weight="250" id="fried-cauliflower"><label for="fried-cauliflower">מוסקה בשרית</label></li>
-                      <li><input type="number" class="menu-item" name="firstFood"data-price="7" data-weight="250" id="fried-cauliflower"><label for="fried-cauliflower">טורטיה מקסיקנית בשרי צמחוני</label></li>
-                  </ul>
-              </td>
-              <td class="section">
-                  <h2>מנה עיקרית [3 לבחירה]</h2>
-                  <ul>
-                      <li><input type="number" class="menu-item"name="menu-item1" data-price="25" data-weight="350" id="marinated-chicken"><label for="marinated-chicken"> עוף בתנור בשזיפים</label></li>
-                      <li><input type="number" class="menu-item" name="menu-item1"data-price="30" data-weight="350" id="steak"><label for="steak"> עוף בגריל</label></li>
-                      <li><input type="number" class="menu-item"name="menu-item1" data-price="28" data-weight="350" id="beef-stew"><label for="beef-stew">כרעיים עוף ממולא</label></li>
-                      <li><input type="number" class="menu-item" name="menu-item1"data-price="22" data-weight="350" id="roasted-chicken"><label for="roasted-chicken">סטייק פרגית</label></li>
-                      <li><input type="number" class="menu-item" name="menu-item1"data-price="35" data-weight="350" id="lamb-shank"><label for="lamb-shank"> סטייק חזה עוף על האש</label></li>
-                      <li><input type="number" class="menu-item"name="menu-item1" data-price="35" data-weight="350" id="lamb-shank"><label for="lamb-shank"> שיפודי קבב מזרחי</label></li>
-                      <li><input type="number" class="menu-item" name="menu-item1"data-price="35" data-weight="350" id="lamb-shank"><label for="lamb-shank">חזה עוף ממולא </label></li>
-                      <li><input type="number" class="menu-item"name="menu-item1"data-price="35" data-weight="350" id="lamb-shank"><label for="lamb-shank">צלי בקר ברוטב פטריות </label></li>
-                      <li><input type="number" class="menu-item"name="menu-item1" data-price="35" data-weight="350" id="lamb-shank"><label for="lamb-shank"> שניצל עוף</label></li>
-                      <li><input type="number" class="menu-item"name="menu-item1"data-price="35" data-weight="350" id="lamb-shank"><label for="lamb-shank"> שיפודי עוף וירקות</label></li>
-                      <li><input type="number" class="menu-item" name="menu-item1"data-price="35" data-weight="350" id="lamb-shank"><label for="lamb-shank">   אצבעות אסאדו בסגנון השף</label></li>
-                  </ul>
-              </td>
+              <td class="section" id="tdSection">
+                <h2>מנה ראשונה [3 לבחירה]</h2>
+                <ul>
+                    <li><input type="number" class="menu-item" name="firstFood" data-name="פילה מושט מזרחי מרוקאי" id="grilled-fish"><label for="grilled-fish">פילה מושט מזרחי מרוקאי</label></li>
+                    <li><input type="number" class="menu-item" name="firstFood" data-name="פילה מושט ברוטב לימון ושקדים" id="salmon"><label for="salmon">פילה מושט ברוטב לימון ושקדים</label></li>
+                    <li><input type="number" class="menu-item" name="firstFood" data-name="פילה סלמון ברוטב פסטו" id="israeli-salad"><label for="israeli-salad">פילה סלמון ברוטב פסטו</label><strong> - לפי גרם</strong></li>
+                    <li><input type="number" class="menu-item" name="firstFood" data-name="נסיכת הנילוס מזרחי" id="beet-carpaccio"><label for="beet-carpaccio">נסיכת הנילוס מזרחי</label> </li>
+                    <li><input type="number" class="menu-item" name="firstFood" data-name="מוקפץ תאילנדי ברשת או פירה" id="roasted-eggplant"><label for="roasted-eggplant">מוקפץ תאילנדי ברשת או פירה</label><strong> - לפי גרם</strong></li>
+                    <li><input type="number" class="menu-item" name="firstFood" data-name="מעורב ירושלמי במצע פירה" id="fried-cauliflower"><label for="fried-cauliflower">מעורב ירושלמי במצע פירה</label><strong> - לפי גרם</strong></li>
+                    <li><input type="number" class="menu-item" name="firstFood" data-name="ארטישוק ממולא בשר" id="artichoke"><label for="artichoke">ארטישוק ממולא בשר</label></li>
+                    <li><input type="number" class="menu-item" name="firstFood" data-name="מאפה פילו בשר עם רוטב" id="phylo-pastry"><label for="phylo-pastry">מאפה פילו בשר עם רוטב</label></li>
+                    <li><input type="number" class="menu-item" name="firstFood" data-name="כבדי עוף מוקפצים בבצל על מצע פירה" id="chicken-livers"><label for="chicken-livers">כבדי עוף מוקפצים בבצל על מצע פירה </label><strong> - לפי גרם</strong></li>
+                    <li><input type="number" class="menu-item" name="firstFood" data-name="מוסקה בשרית" id="moussaka"><label for="moussaka">מוסקה בשרית</label></li>
+                    <li><input type="number" class="menu-item" name="firstFood" data-name="טורטיה מקסיקנית בשרי צמחוני" id="tortilla"><label for="tortilla">טורטיה מקסיקנית בשרי צמחוני</label></li>
+                    <li><input type="number" class="menu-item" name="firstFood" data-name="קדאיף בשר" id="kadayif-meat"><label for="kadayif-meat">קדאיף בשר</label></li>
+                    <li><input type="number" class="menu-item" name="firstFood" data-name="קראפון אסאדו" id="carpaccio-asado"><label for="carpaccio-asado">קראפון אסאדו</label></li>
+                    <li><input type="number" class="menu-item" name="firstFood" data-name="קציצות דגים" id="fish-balls"><label for="fish-balls">קציצות דגים</label></li>
+                </ul>
+            </td>
+            <td class="section" id="tdSection">
+              <h2>מנה עיקרית [3 לבחירה]</h2> 
+              <ul>
+                  <li><input type="number" class="menu-item" name="mainFood" data-name="שניצל עוף" id="chicken-schnitzel"><label for="chicken-schnitzel">שניצל עוף</label></li>
+                  <li><input type="number" class="menu-item" name="mainFood" data-name="עוף בתנור בשזיפים" id="chicken-thighs"><label for="chicken-thighs">עוף בתנור בשזיפים</label></li>
+                  <li><input type="number" class="menu-item" name="mainFood" data-name="עוף בגריל" id="entrecote-steak"><label for="entrecote-steak">עוף בגריל</label></li>
+                  <li><input type="number" class="menu-item" name="mainFood" data-name="כרעיים עוף ממולא" id="lamb-kebab"><label for="lamb-kebab">כרעיים עוף ממולא</label></li>
+                  <li><input type="number" class="menu-item" name="mainFood" data-name="סטייק פרגית" id="chicken-breast"><label for="chicken-breast">סטייק פרגית</label></li>
+                  <li><input type="number" class="menu-item" name="mainFood" data-name="סטייק חזה עוף על האש" id="homemade-burger"><label for="homemade-burger">סטייק חזה עוף על האש</label></li>
+                  <li><input type="number" class="menu-item" name="mainFood" data-name="שיפודי קבב מזרחי" id="beef-stew"><label for="beef-stew">שיפודי קבב מזרחי</label></li>
+                  <li><input type="number" class="menu-item" name="mainFood" data-name="חזה עוף ממולא" id="fish-fillet"><label for="fish-fillet">חזה עוף ממולא</label></li>
+                  <li><input type="number" class="menu-item" name="mainFood" data-name="שיפודי עוף וירקות" id="jerusalem-mix"><label for="jerusalem-mix">שיפודי עוף וירקות</label></li>
+                  <li><input type="number" class="menu-item" name="mainFood" data-name="אצבעות אסאדו בסגנון השף" id="pasta-bolognese"><label for="pasta-bolognese">אצבעות אסאדו בסגנון השף</label></li>
+                  <li><input type="number" class="menu-item" name="mainFood" data-name="צלי בקר מספר 6" id="beef-stew-6"><label for="beef-stew-6">צלי בקר מספר 6</label></li>
+                  <li><input type="number" class="menu-item" name="mainFood" data-name="צלי בקר מספר 5" id="beef-stew-5"><label for="beef-stew-5">צלי בקר מספר 5</label></li>
+                  <li><input type="number" class="menu-item" name="mainFood" data-name="כדורי בשר" id="meatballs"><label for="meatballs">כדורי בשר</label></li>
+              </ul>
+            <h3> לפי גרם !!</h3>
+          </td>
+          
+          
           </tr>
           <tr>
-              <td class="section">
+              <td class="section" id="tdSection">
                   <h2>תוספות [3 לבחירה]</h2>
                   <ul>
-                      <li><input type="checkbox" name="FoodPlus" data-price="10" data-weight="200" id="rice"><label for="rice"> אורז עם שקדים וצימוקים</label></li>
-                      <li><input type="checkbox" name="FoodPlus" data-price="8" data-weight="200" id="baked-potatoes"><label for="baked-potatoes"> אורז צהוב</label></li>
-                      <li><input type="checkbox" name="FoodPlus" data-price="8" data-weight="200" id="baked-potatoes"><label for="baked-potatoes">אורז עם ירקות </label></li>
-                      <li><input type="checkbox" name="FoodPlus" data-price="8" data-weight="200" id="baked-potatoes"><label for="baked-potatoes">אפונה ארטישוק וסלרי </label></li>
-                      <li><input type="checkbox" name="FoodPlus" data-price="8" data-weight="200" id="baked-potatoes"><label for="baked-potatoes"> שעועית ארוכה ברוטב עגבניות</label></li>
-                      <li><input type="checkbox" name="FoodPlus" data-price="8" data-weight="200" id="baked-potatoes"><label for="baked-potatoes">שעועית ארוכה מוקפצת </label></li>
-                      <li><input type="checkbox" name="FoodPlus" data-price="8" data-weight="200" id="baked-potatoes"><label for="baked-potatoes"> ירקות מאודים בתנור</label></li>
-                      <li><input type="checkbox" name="FoodPlus" data-price="8" data-weight="200" id="baked-potatoes"><label for="baked-potatoes"> ירקות סיני מוקפץ</label></li>
+                      <li><input type="checkbox" name="FoodPlus"  id="rice"><label for="rice"> אורז עם שקדים וצימוקים</label></li>
+                      <li><input type="checkbox" name="FoodPlus" id="baked-potatoes"><label for="baked-potatoes"> אורז צהוב</label></li>
+                      <li><input type="checkbox" name="FoodPlus" id="baked-potatoes"><label for="baked-potatoes">אורז עם ירקות </label></li>
+                      <li><input type="checkbox" name="FoodPlus" id="baked-potatoes"><label for="baked-potatoes">אפונה ארטישוק וסלרי </label></li>
+                      <li><input type="checkbox" name="FoodPlus" id="baked-potatoes"><label for="baked-potatoes"> שעועית ארוכה ברוטב עגבניות</label></li>
+                      <li><input type="checkbox" name="FoodPlus" id="baked-potatoes"><label for="baked-potatoes">שעועית ארוכה מוקפצת </label></li>
+                      <li><input type="checkbox" name="FoodPlus" id="baked-potatoes"><label for="baked-potatoes"> ירקות מאודים בתנור</label></li>
+                      <li><input type="checkbox" name="FoodPlus" id="baked-potatoes"><label for="baked-potatoes"> ירקות סיני מוקפץ</label></li>
+                      <li><input type="checkbox" name="FoodPlus" id="baked-potatoes"><label for="baked-potatoes"> זיתים מרוקאים</label></li>
+                      <li><input type="checkbox" name="FoodPlus" id="baked-potatoes"><label for="baked-potatoes"> ארטישוק ופטריות</label></li>
+                      <li><input type="checkbox" name="FoodPlus" id="baked-potatoes"><label for="baked-potatoes">תפו'א סירות </label></li>
+                      <li><input type="checkbox" name="FoodPlus" id="baked-potatoes"><label for="baked-potatoes"> תפו'א פריזיאן שלם </label></li>
+                      <li><input type="checkbox" name="FoodPlus" id="stir-fry"><label for="stir-fry">  תפו'א פרוס אנה </label></li>
+                      <li><input type="checkbox" name="FoodPlus" id="couscous"><label for="couscous"> בטטה בשמן זית ורוזמרין</label></li>
+                      <li><input type="checkbox" name="FoodPlus" id="green-beans"><label for="green-beans">דואט תפו'א ובטטה </label></li>
+                      <li><input type="checkbox" name="FoodPlus" id="green-beans"><label for="green-beans">קוסקוס עם ירקות </label></li>
+                      <li><input type="checkbox" name="FoodPlus" id="green-beans"><label for="green-beans"> פירה  </label></li>
+                      <li><input type="checkbox" name="FoodPlus" id="green-beans"><label for="green-beans"> אפונה וגזר </label></li>
 
-                      <li><input type="checkbox" name="FoodPlus" data-price="8" data-weight="200" id="baked-potatoes"><label for="baked-potatoes"> זיתים מרוקאים</label></li>
-                      <li><input type="checkbox" name="FoodPlus" data-price="8" data-weight="200" id="baked-potatoes"><label for="baked-potatoes"> ארטישוק ופטריות</label></li>
-                      <li><input type="checkbox" name="FoodPlus" data-price="8" data-weight="200" id="baked-potatoes"><label for="baked-potatoes">תפו'א סירות </label></li>
-                      <li><input type="checkbox" name="FoodPlus" data-price="8" data-weight="200" id="baked-potatoes"><label for="baked-potatoes"> תפו'א פריזיאן שלם </label></li>
-                      <li><input type="checkbox" name="FoodPlus" data-price="9" data-weight="200" id="stir-fry"><label for="stir-fry">  תפו'א פרוס אנה </label></li>
-                      <li><input type="checkbox" name="FoodPlus" data-price="7" data-weight="200" id="couscous"><label for="couscous"> בטטה בשמן זית ורוזמרין</label></li>
-                      <li><input type="checkbox" name="FoodPlus" data-price="6" data-weight="200" id="green-beans"><label for="green-beans">דואט תפו'א ובטטה </label></li>
-                      <li><input type="checkbox" name="FoodPlus"data-price="6" data-weight="200" id="green-beans"><label for="green-beans">קוסקוס עם ירקות </label></li>
                   </ul>
               </td>
-              <td class="section">
+              <td class="section" id="tdSection">
                   <h2>קינוחים [לבחירה]</h2>
                   <ul>
-                      <li><input type="checkbox" class="menu-item" data-price="12" data-weight="100" id="chocolate-mousse"><label for="chocolate-mousse">גלידה </label></li>
-                      <li><input type="checkbox" class="menu-item" data-price="10" data-weight="100" id="fruit-salad"><label for="fruit-salad">עוגת מוס שוקולד</label></li>
-                      <li><input type="checkbox" class="menu-item" data-price="11" data-weight="100" id="cheesecake"><label for="cheesecake"> עוגת שכבות שוקולד</label></li>
-                      <li><input type="checkbox" class="menu-item" data-price="9" data-weight="100" id="mini-eclairs"><label for="mini-eclairs"> עוגות בצבעים</label></li>
-                      <li><input type="checkbox" class="menu-item" data-price="9" data-weight="100" id="mini-eclairs"><label for="mini-eclairs">סופלה חם</label></li>
+                      <li><input type="checkbox" class="menu-item" id="chocolate-mousse"><label for="chocolate-mousse">גלידה </label></li>
+                      <li><input type="checkbox" class="menu-item" id="fruit-salad"><label for="fruit-salad">עוגת מוס שוקולד</label></li>
+                      <li><input type="checkbox" class="menu-item" id="cheesecake"><label for="cheesecake"> עוגת שכבות שוקולד</label></li>
+                      <li><input type="checkbox" class="menu-item"id="mini-eclairs"><label for="mini-eclairs"> עוגות בצבעים</label></li>
+                      <li><input type="checkbox" class="menu-item"id="mini-eclairs"><label for="mini-eclairs">סופלה חם</label></li>
                   </ul>
               </td>
           </tr>
       </table>
   </div>
     </div>
-    <button id="finish">סיום הזמנה</button>
+    <button id="finish">סיכום הזמנה</button>
+    <br>
+    <br>
+    <button id="finish2" >סיכום הזמנה למטבח</button>
     <br><br>
-    <div id="Order summary"></div>
+    <button id="finish3">הדפסה</button>
+    <br><br>
+   <div id="data-summary"></div>
+    <div id="Order-summary"></div>
+
     <footer>
-        <p>אולמי הפנינה הבחירה הבטוחה 2024 &copy; </p>
+      <p>אולמי הפנינה הבחירה הבטוחה 2024 &copy; </p>
     </footer>
     <script src="./index.js"></script>
+   
+
 </body>
 </html>
