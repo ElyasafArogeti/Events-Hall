@@ -176,6 +176,36 @@ footer {
     padding: 8px;
     text-align: center;
   }
+  .page {
+    display: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    width: 50%;
+    border-radius: 5px;
+    background-color: #61676eaf;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  .active {
+    display: block;
+    padding: 10px 20px;
+    font-size: 20px;
+    width: 50%;
+    border-radius: 5px;
+    background-color: #61676eaf;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+ #imgh {
+    min-width: 900px;
+    background-color: rgba(255, 255, 255, 0.9); /* חצי שקוף */
+    box-shadow: 0 0 10px rgb(241, 202, 5);
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    
+ }
 
 /* מדיה קוורי לרוחב מסך של 412px */
 @media (max-width: 412px) {

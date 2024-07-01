@@ -1,172 +1,171 @@
 <!DOCTYPE html>
 <html lang="he">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Event Design Website</title>
-    <link rel="stylesheet" href="./index.css" />
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>כניסת מנהל</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("./לימודי-תכנות-לדתיים.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 50vh;
+            margin: 0;
+            visibility: hidden; /* Hide content initially */
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 250px;
+            width: 90%;
+            text-align: center;
+            opacity: 0.9;
+        }
+
+        .form-container h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bolder;
+        }
+
+        .form-group input {
+            width: 92%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-weight: bolder;
+            direction: rtl;
+        }
+
+        .form-group input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .form-group .error {
+            color: red;
+            font-size: 0.875em;
+            display: none;
+        }
+
+        .form-container button {
+            width: 98%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bolder;
+            font-size: 18px;
+        }
+
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
-<body dir="rtl">
-  <br>
-      <img src="./poto/4.png" id="img">
-    <h2>פרטי בעל ההזמנה</h2>
-    <br/>
-    <div dir="rtl" class="input-container1">
-        <input type="text" class="input-field" placeholder="שם בעל האירוע" id="event-owner" />
-        <input type="date" class="input-field" placeholder="תאריך " id="event-date" />
-        <input type="text" class="input-field" placeholder="מספר טלפון" id="phone-number" />
-        <br /><br />
+<body>
+    <div class="form-container">
+        <h2>כניסת מנהל</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">שם משתמש</label>
+                <input type="text" id="username" name="username">
+                <div class="error" id="usernameError">יש להזין שם משתמש</div>
+                <div class="error" id="invalidUsernameError">שם משתמש לא תקין</div>
+            </div>
+            <div class="form-group">
+                <label for="password">סיסמא</label>
+                <input type="password" id="password" name="password">
+                <div class="error" id="passwordError">יש להזין סיסמא</div>
+                <div class="error" id="invalidPasswordError">סיסמא לא נכונה</div>
+            </div>
+            <button type="submit">כניסה</button>
+        </form>
     </div>
-    <div dir="rtl" class="input-container">
-        <input type="number" class="input-field" placeholder=" מספר מוזמנים" id="guest-count" />
-        <input list="locushn" type="text" class="input-field" placeholder="מקום האירוע" id="event-location" />
-        <datalist id="locushn">
-            <option value="הפנינה ">ביתר עלית</option>
-        </datalist>
-    </div>
-    <br />
-    <div class="container">
-      <div class="header">
-          <h1>תפריט אירוע</h1>
-          <p>קייטרינג הפנינה - כשר למהדרין</p>
-          <p>054-6600-200 | eli6600200@gmail.com</p>
-      </div>
-      <table>
-          <tr>
-              <td class="section" id="tdSection">
-                  <h2>סלטים [8 לבחירה]</h2>
-                  <ul class="salads-list">
-                    <li><input type="checkbox"name="salads" >  <label for="salad1">גזר מרוקאי חי</label>    </li>
-                    <li><input type="checkbox"name="salads" > <label for="salad2">גזר מרוקאי מבושל</label> </li>
-                    <li><input type="checkbox"name="salads" ><label for="salad3">חומוס עם גרגירי חומוס ושמן זית</label> </li>
-                    <li><input type="checkbox"name="salads" >  <label for="salad4">טחינה מתובלת</label> </li>
-                    <li><input type="checkbox"name="salads" ><label for="salad5">חמוצי הבית</label></li>
-                    <li><input type="checkbox"name="salads" >  <label for="salad6">מבחר חמוצים</label>  </li>
-                    <li><input type="checkbox"name="salads" ><label for="salad7">חסה, שרי ונבטים ברוטב</label></li>
-                    <li><input type="checkbox"name="salads" ><label for="salad8">ירקות חי טרי ועשיר</label> </li>
-                    <li><input type="checkbox"name="salads"> <label for="salad9">חציל שלם עם טחינה</label>   </li>
-                    <li><input type="checkbox" name="salads"> <label for="salad10">חציל יווני</label>  </li>
-                    <li><input type="checkbox" name="salads">  <label for="salad11">חציל טבעי על האש</label>   </li>
-                    <li><input type="checkbox" name="salads"> <label for="salad12">חציל במיונז</label> </li>
-                    <li><input type="checkbox" name="salads">  <label for="salad13">קוביות חציל פקנטי</label></li>
-                    <div id="salad-list" class="salad-list hidden">
-                    <li><input type="checkbox" name="salads" ><label for="salad14">כרוב ושמיר</label>    </li>
-                    <li><input type="checkbox" name="salads"><label for="salad15">כרוב וגזר במיונז</label> </li>
-                    <li><input type="checkbox" name="salads"><label for="salad16">כרוב וגזר מטובל</label></li>
-                    <li><input type="checkbox" name="salads"><label for="salad17">כרוב אדום במיונז</label></li>
-                    <li><input type="checkbox" name="salads"><label for="salad18">סלט עגבניות חריף</label></li>
-                    <li><input type="checkbox" name="salads"><label for="salad18">מטבוחה</label> </li>
-                    <li><input type="checkbox" name="salads"><label for="salad18">סלט מלפפון בשמיר</label> </li>
-                    <li><input type="checkbox" name="salads"><label for="salad18">שרי בבזיליקום</label> </li>
-                    <li><input type="checkbox" name="salads"><label for="salad18">פלפל מתוק בצבעים</label> </li>
-                    <li><input type="checkbox" name="salads"><label for="salad18">סלט טבולה</label> </li>
-                    <li><input type="checkbox" name="salads"><label for="salad18">פלפל חריף</label> </li>
-                    <li><input type="checkbox" name="salads"><label for="salad18">שורש סלרי</label> </li>
-                    <li><input type="checkbox" name="salads"><label for="salad18">תירס מקסיקני</label> </li>
-                    <li><input type="checkbox" name="salads"><label for="salad18">תפו'א במיונז</label> </li>
-                    <li><input type="checkbox" name="salads"><label for="salad18">קוביות סלק</label> </li>
-                    <li><input type="checkbox" name="salads"><label for="salad18">סלט בטטה </label> </li>
-                    <li><input type="checkbox" name="salads"><label for="salad18">סלט ירוק</label> </li>
-                    </div>
-                    <br>
-                    <button class="toggle-button" onclick="toggleSalads()"><img src="./poto/split-vertical.png" width="30px" height="30px"></button>
-              </td>
-              <td class="section" id="tdSection">
-                <h2>מנה ראשונה [3 לבחירה]</h2>
-                <ul>
-                    <li><input type="number" class="menu-item" name="firstFood" data-name="פילה מושט מזרחי מרוקאי" id="grilled-fish"><label for="grilled-fish">פילה מושט מזרחי מרוקאי</label></li>
-                    <li><input type="number" class="menu-item" name="firstFood" data-name="פילה מושט ברוטב לימון ושקדים" id="salmon"><label for="salmon">פילה מושט ברוטב לימון ושקדים</label></li>
-                    <li><input type="number" class="menu-item" name="firstFood" data-name="פילה סלמון ברוטב פסטו" id="israeli-salad"><label for="israeli-salad">פילה סלמון ברוטב פסטו</label><strong> - לפי גרם</strong></li>
-                    <li><input type="number" class="menu-item" name="firstFood" data-name="נסיכת הנילוס מזרחי" id="beet-carpaccio"><label for="beet-carpaccio">נסיכת הנילוס מזרחי</label> </li>
-                    <li><input type="number" class="menu-item" name="firstFood" data-name="מוקפץ תאילנדי ברשת או פירה" id="roasted-eggplant"><label for="roasted-eggplant">מוקפץ תאילנדי ברשת או פירה</label><strong> - לפי גרם</strong></li>
-                    <li><input type="number" class="menu-item" name="firstFood" data-name="מעורב ירושלמי במצע פירה" id="fried-cauliflower"><label for="fried-cauliflower">מעורב ירושלמי במצע פירה</label><strong> - לפי גרם</strong></li>
-                    <li><input type="number" class="menu-item" name="firstFood" data-name="ארטישוק ממולא בשר" id="artichoke"><label for="artichoke">ארטישוק ממולא בשר</label></li>
-                    <li><input type="number" class="menu-item" name="firstFood" data-name="מאפה פילו בשר עם רוטב" id="phylo-pastry"><label for="phylo-pastry">מאפה פילו בשר עם רוטב</label></li>
-                    <li><input type="number" class="menu-item" name="firstFood" data-name="כבדי עוף מוקפצים בבצל על מצע פירה" id="chicken-livers"><label for="chicken-livers">כבדי עוף מוקפצים בבצל על מצע פירה </label><strong> - לפי גרם</strong></li>
-                    <li><input type="number" class="menu-item" name="firstFood" data-name="מוסקה בשרית" id="moussaka"><label for="moussaka">מוסקה בשרית</label></li>
-                    <li><input type="number" class="menu-item" name="firstFood" data-name="טורטיה מקסיקנית בשרי צמחוני" id="tortilla"><label for="tortilla">טורטיה מקסיקנית בשרי צמחוני</label></li>
-                    <li><input type="number" class="menu-item" name="firstFood" data-name="קדאיף בשר" id="kadayif-meat"><label for="kadayif-meat">קדאיף בשר</label></li>
-                    <li><input type="number" class="menu-item" name="firstFood" data-name="קראפון אסאדו" id="carpaccio-asado"><label for="carpaccio-asado">קראפון אסאדו</label></li>
-                    <li><input type="number" class="menu-item" name="firstFood" data-name="קציצות דגים" id="fish-balls"><label for="fish-balls">קציצות דגים</label></li>
-                </ul>
-            </td>
-            <td class="section" id="tdSection">
-              <h2>מנה עיקרית [3 לבחירה]</h2> 
-              <ul>
-                  <li><input type="number" class="menu-item" name="mainFood" data-name="שניצל עוף" id="chicken-schnitzel"><label for="chicken-schnitzel">שניצל עוף</label></li>
-                  <li><input type="number" class="menu-item" name="mainFood" data-name="עוף בתנור בשזיפים" id="chicken-thighs"><label for="chicken-thighs">עוף בתנור בשזיפים</label></li>
-                  <li><input type="number" class="menu-item" name="mainFood" data-name="עוף בגריל" id="entrecote-steak"><label for="entrecote-steak">עוף בגריל</label></li>
-                  <li><input type="number" class="menu-item" name="mainFood" data-name="כרעיים עוף ממולא" id="lamb-kebab"><label for="lamb-kebab">כרעיים עוף ממולא</label></li>
-                  <li><input type="number" class="menu-item" name="mainFood" data-name="סטייק פרגית" id="chicken-breast"><label for="chicken-breast">סטייק פרגית</label></li>
-                  <li><input type="number" class="menu-item" name="mainFood" data-name="סטייק חזה עוף על האש" id="homemade-burger"><label for="homemade-burger">סטייק חזה עוף על האש</label></li>
-                  <li><input type="number" class="menu-item" name="mainFood" data-name="שיפודי קבב מזרחי" id="beef-stew"><label for="beef-stew">שיפודי קבב מזרחי</label></li>
-                  <li><input type="number" class="menu-item" name="mainFood" data-name="חזה עוף ממולא" id="fish-fillet"><label for="fish-fillet">חזה עוף ממולא</label></li>
-                  <li><input type="number" class="menu-item" name="mainFood" data-name="שיפודי עוף וירקות" id="jerusalem-mix"><label for="jerusalem-mix">שיפודי עוף וירקות</label></li>
-                  <li><input type="number" class="menu-item" name="mainFood" data-name="אצבעות אסאדו בסגנון השף" id="pasta-bolognese"><label for="pasta-bolognese">אצבעות אסאדו בסגנון השף</label></li>
-                  <li><input type="number" class="menu-item" name="mainFood" data-name="צלי בקר מספר 6" id="beef-stew-6"><label for="beef-stew-6">צלי בקר מספר 6</label></li>
-                  <li><input type="number" class="menu-item" name="mainFood" data-name="צלי בקר מספר 5" id="beef-stew-5"><label for="beef-stew-5">צלי בקר מספר 5</label></li>
-                  <li><input type="number" class="menu-item" name="mainFood" data-name="כדורי בשר" id="meatballs"><label for="meatballs">כדורי בשר</label></li>
-              </ul>
-            <h3> לפי גרם !!</h3>
-          </td>
-          
-          
-          </tr>
-          <tr>
-              <td class="section" id="tdSection">
-                  <h2>תוספות [3 לבחירה]</h2>
-                  <ul>
-                      <li><input type="checkbox" name="FoodPlus"  id="rice"><label for="rice"> אורז עם שקדים וצימוקים</label></li>
-                      <li><input type="checkbox" name="FoodPlus" id="baked-potatoes"><label for="baked-potatoes"> אורז צהוב</label></li>
-                      <li><input type="checkbox" name="FoodPlus" id="baked-potatoes"><label for="baked-potatoes">אורז עם ירקות </label></li>
-                      <li><input type="checkbox" name="FoodPlus" id="baked-potatoes"><label for="baked-potatoes">אפונה ארטישוק וסלרי </label></li>
-                      <li><input type="checkbox" name="FoodPlus" id="baked-potatoes"><label for="baked-potatoes"> שעועית ארוכה ברוטב עגבניות</label></li>
-                      <li><input type="checkbox" name="FoodPlus" id="baked-potatoes"><label for="baked-potatoes">שעועית ארוכה מוקפצת </label></li>
-                      <li><input type="checkbox" name="FoodPlus" id="baked-potatoes"><label for="baked-potatoes"> ירקות מאודים בתנור</label></li>
-                      <li><input type="checkbox" name="FoodPlus" id="baked-potatoes"><label for="baked-potatoes"> ירקות סיני מוקפץ</label></li>
-                      <li><input type="checkbox" name="FoodPlus" id="baked-potatoes"><label for="baked-potatoes"> זיתים מרוקאים</label></li>
-                      <li><input type="checkbox" name="FoodPlus" id="baked-potatoes"><label for="baked-potatoes"> ארטישוק ופטריות</label></li>
-                      <li><input type="checkbox" name="FoodPlus" id="baked-potatoes"><label for="baked-potatoes">תפו'א סירות </label></li>
-                      <li><input type="checkbox" name="FoodPlus" id="baked-potatoes"><label for="baked-potatoes"> תפו'א פריזיאן שלם </label></li>
-                      <li><input type="checkbox" name="FoodPlus" id="stir-fry"><label for="stir-fry">  תפו'א פרוס אנה </label></li>
-                      <li><input type="checkbox" name="FoodPlus" id="couscous"><label for="couscous"> בטטה בשמן זית ורוזמרין</label></li>
-                      <li><input type="checkbox" name="FoodPlus" id="green-beans"><label for="green-beans">דואט תפו'א ובטטה </label></li>
-                      <li><input type="checkbox" name="FoodPlus" id="green-beans"><label for="green-beans">קוסקוס עם ירקות </label></li>
-                      <li><input type="checkbox" name="FoodPlus" id="green-beans"><label for="green-beans"> פירה  </label></li>
-                      <li><input type="checkbox" name="FoodPlus" id="green-beans"><label for="green-beans"> אפונה וגזר </label></li>
+    <script>
+        // Show content when the page is fully loaded
+        window.addEventListener('load', function() {
+            document.body.style.visibility = 'visible';
+        });
 
-                  </ul>
-              </td>
-              <td class="section" id="tdSection">
-                  <h2>קינוחים [לבחירה]</h2>
-                  <ul>
-                      <li><input type="checkbox" class="menu-item" id="chocolate-mousse"><label for="chocolate-mousse">גלידה </label></li>
-                      <li><input type="checkbox" class="menu-item" id="fruit-salad"><label for="fruit-salad">עוגת מוס שוקולד</label></li>
-                      <li><input type="checkbox" class="menu-item" id="cheesecake"><label for="cheesecake"> עוגת שכבות שוקולד</label></li>
-                      <li><input type="checkbox" class="menu-item"id="mini-eclairs"><label for="mini-eclairs"> עוגות בצבעים</label></li>
-                      <li><input type="checkbox" class="menu-item"id="mini-eclairs"><label for="mini-eclairs">סופלה חם</label></li>
-                  </ul>
-              </td>
-          </tr>
-      </table>
-  </div>
-    </div>
-    <button id="finish">סיכום הזמנה</button>
-    <br>
-    <br>
-    <button id="finish2" >סיכום הזמנה למטבח</button>
-    <br><br>
-    <button id="finish3">הדפסה</button>
-    <br><br>
-   <div id="data-summary"></div>
-    <div id="Order-summary"></div>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
 
-    <footer>
-      <p>אולמי הפנינה הבחירה הבטוחה 2024 &copy; </p>
-    </footer>
-    <script src="./index.js"></script>
-   
+            var isValid = true;
 
+            var username = document.getElementById('username');
+            var password = document.getElementById('password');
+
+            var usernameError = document.getElementById('usernameError');
+            var invalidUsernameError = document.getElementById('invalidUsernameError');
+            var passwordError = document.getElementById('passwordError');
+            var invalidPasswordError = document.getElementById('invalidPasswordError');
+
+            if (username.value.trim() === '') {
+                usernameError.style.display = 'block';
+                isValid = false;
+            } else {
+                usernameError.style.display = 'none';
+            }
+
+            if (password.value.trim() === '') {
+                passwordError.style.display = 'block';
+                isValid = false;
+            } else {
+                passwordError.style.display = 'none';
+            }
+
+            if (isValid) {
+                if (password.value === '585155' && (username.value === 'אלי' || username.value === 'נריה')) {
+                    invalidPasswordError.style.display = 'none';
+                    invalidUsernameError.style.display = 'none';
+                    alert('אתם מועברים...');
+                    setTimeout(function() {
+                        window.location.href = './index.html'; // יש לשנות לכתובת של הדף הבא
+                    }, 1000); // העברה לדף הבא לאחר 2 שניות
+                } else {
+                    if (password.value !== '585155') {
+                        invalidPasswordError.style.display = 'block';
+                        setTimeout(function() {
+                            invalidPasswordError.style.display = 'none';
+                        }, 2000); // העלמת ההודעה לאחר 2 שניות
+                    } else {
+                        invalidPasswordError.style.display = 'none';
+                    }
+                    if (username.value !== 'אלי' && username.value !== 'נריה') {
+                        invalidUsernameError.style.display = 'block';
+                        setTimeout(function() {
+                            invalidUsernameError.style.display = 'none';
+                        }, 2000); // העלמת ההודעה לאחר 2 שניות
+                    } else {
+                        invalidUsernameError.style.display = 'none';
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>

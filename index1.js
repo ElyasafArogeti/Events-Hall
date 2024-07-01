@@ -269,6 +269,8 @@ document.getElementById('finish').addEventListener('click', function() {
 
                                            // טיפול במנה ראשונה 
   const firstFoodItems = document.querySelectorAll('input[name="firstFood"]');
+
+  
   const specialItems = ["פילה סלמון ברוטב פסטו", "כבדי עוף מוקפצים בבצל על מצע פירה", "מעורב ירושלמי במצע פירה", "מוקפץ תאילנדי ברשת או פירה", "קציצות דגים"];
   const selectedItems = Array.from(firstFoodItems)
     .filter(item => item.type === 'number' && !isNaN(item.value) && item.value > 0)
@@ -280,7 +282,7 @@ document.getElementById('finish').addEventListener('click', function() {
         weight: parseFloat(item.dataset.weight)
     }));
 
-  if (selectedItems.length > 0) { // חישוב מנה ראשונה 
+  if (selectedItems.length > 0) {       // חישוב מנה ראשונה 
     orderSummary += `
     <tr>
       <th colspan="2" style=" border: 1px solid black;
@@ -293,18 +295,18 @@ document.getElementById('finish').addEventListener('click', function() {
           let price = fristFoodPrice[foodName];
           let weight = valuefood.value;
           if (specialItems.includes(foodName)) {
-              // חישוב מיוחד עבור פריטים לפי גרם
-              let sum = fristFoodPrice[foodName] / fristFoodWeight[foodName];
-              let sumpersonFoodFrist = sum * weight; // חשב את סכום המנה לכל האורחים לפי גרם
-              totalCost += sumpersonFoodFrist; // הוסף לסכום הכולל
+                                  // חישוב מיוחד עבור פריטים לפי גרם
+              let sum = fristFoodPrice[foodName] * weight;
+              let weightOfPerson = fristFoodWeight[foodName] * weight ;
+              console.log(weightOfPerson);
+              totalCost += sum; // הוסף לסכום הכולל
               orderSummary += `
               <tr>
                 <td>${foodName}</td>
-                <td>המחיר הכולל: ${sumpersonFoodFrist.toFixed(2)} ש"ח, משקל כולל מנה ראשונה: ${weight.toFixed(2)} גרם</td>
+                <td>המחיר הכולל: ${sum.toFixed(2)} ש"ח, משקל כולל מנה ראשונה: ${weightOfPerson.toFixed(2)} גרם</td>
               </tr>
             `;
-          } else {
-              // חישוב רגיל עבור פריטים לפי יחידות
+          } else {                                        // חישוב רגיל עבור פריטים לפי יחידות
               let sumpersonFoodFrist = price * weight; // חשב את סכום המנה לכל האורחים
               totalCost += sumpersonFoodFrist; // הוסף לסכום הכולל
               orderSummary += `
@@ -315,12 +317,10 @@ document.getElementById('finish').addEventListener('click', function() {
             `;
           }
       });
-   
-  }
-
+  }     
                                      // מנה עיקרית 
   const mainFoodItems = document.querySelectorAll('input[name="mainFood"]');
-  const selectedItemsmain = Array.from(mainFoodItems)// מערך של כל הפריטים שנבחרו 
+  const selectedItemsmain = Array.from(mainFoodItems)                // מערך של כל הפריטים שנבחרו 
     .filter(item => item.type === 'number' && !isNaN(item.value) && item.value > 0)
     .map(item => ({
         id: item.id,
@@ -329,48 +329,101 @@ document.getElementById('finish').addEventListener('click', function() {
         price: parseFloat(item.dataset.price),
         weight: parseFloat(item.dataset.weight)
     }));
-
-  if (selectedItemsmain.length > 0) { // חישוב מנה עיקרית יחידות
+  if (selectedItemsmain.length > 0) { 
     orderSummary += `
     <tr>
       <th colspan="2" style=" border: 1px solid black;
     padding: 8px;
     text-align: center;">מנה עיקרית [3 לבחירה]</th>
     </tr>
-  `;
+  `;                                                          // חישוב מיוחד עבור פריטים לפי גרם
     selectedItemsmain.forEach(valuefood => {
         const foodName = valuefood.name;
-        let sum = lestFoodPrice[foodName] / lestFoodWeight[foodName];
-        let weight = valuefood.value;
-        // חישוב מיוחד עבור פריטים לפי גרם
-        let sumpersonlestFrist = sum * weight; // חשב את סכום המנה לכל האורחים לפי גרם
-        totalCost += sumpersonlestFrist; // הוסף לסכום הכולל
+        let sum = lestFoodPrice[foodName] * valuefood.value;
+      
+        let weightOfPersonLestFood = lestFoodWeight[foodName] * valuefood.value ;
+        console.log(weightOfPersonLestFood);
+        totalCost += sum; // הוסף לסכום הכולל
         orderSummary += `
           <tr>
             <td>${foodName}</td>
-            <td>המחיר הכולל: ${sumpersonlestFrist.toFixed(2)} ש"ח, משקל כולל מנה עיקרית: ${weight.toFixed(2)} גרם</td>
+            <td>המחיר הכולל: ${sum.toFixed(2)} ש"ח, משקל כולל מנה עיקרית: ${weightOfPersonLestFood.toFixed(2)} גרם</td>
           </tr>
         `;
     });
-  }
-
- 
-
-           // הוספת הסיכום למסמך
+  }   
+                                        // הוספת הסיכום למסמך
   const summaryDiv = document.querySelector("#Order-summary");
   const DivdataSummary = document.querySelector("#data-summary");
- 
-  summaryDiv.innerHTML = orderSummary+`<h3>סה"כ עלות האירוע: ${totalCost} ש"ח</h3>`;
+  summaryDiv.innerHTML = orderSummary+`<h3>סה"כ עלות האירוע: ${totalCost.toFixed(2)} ש"ח</h3>`;
   DivdataSummary.innerHTML = dataSummary;
-    // הצגת עלות האירוע הכוללת
     
+    const f3 = document.querySelector("#finish3");    // הצגת הכפתורי המשך
+     f3.classList.add("active");  
+    const f4 = document.querySelector("#finish4");    // הצגת הכפתורי המשך
+     f4.classList.add("active");  
+     const f2 = document.querySelector("#finish2");
+     f2.classList.add("active");                        
 });
-document.getElementById('finish2').addEventListener('click', function(){
- 
- })
-      
+
+document.getElementById('finish4').addEventListener('click', function(){//לחיצה על הדפס הזמנה רגיל
+  const h2=document.querySelector("h2")
+  const f2 = document.querySelector("#finish2");
+  const f3 = document.querySelector("#finish3");
+  const f4 = document.querySelector("#finish4");
+ const imgheder = document.querySelector("#img");
+ const divdata = document.querySelector("#data-summary");
+ const divOrder = document.querySelector("#Order-summary");
+setTimeout (() => {
+  h2.style.display= "none"; 
+  f3.style.display= "none"; 
+  f4.style.display= "none"; 
+f2.style.display= "none"; 
+imgheder.style.display= "none";
+divdata.style.display= "none";
+divOrder.style.display= "none";
+window.print();
+},1000);
+setTimeout (() => {
+  h2.style.display= "block"; 
+  divdata.style.display= "block";
+  divOrder.style.display= "block";
+     f3.style.display= "block"; 
+     f4.style.display= "block"; 
+  f2.style.display= "block"; 
+  imgheder.style.display= "inline-block"; 
+  },2000);
+ });
 
  document.getElementById('finish3').addEventListener('click', function(){
-  window.print();
- })
-      
+  const f2 = document.querySelector("#finish2");
+  const f3 = document.querySelector("#finish3");
+  const f4 = document.querySelector("#finish4");
+ const container = document.querySelector(".container");
+ const imgheder=document.querySelector("#img");
+ const headerdata = document.querySelector("#header-data");
+setTimeout (() => {
+  headerdata.style.display= "none"; 
+container.style.display= "none"; 
+  f3.style.display= "none"; 
+  f4.style.display= "none"; 
+f2.style.display= "none"; 
+imgheder.style.display= "none";
+window.print();
+},1000);
+setTimeout (() => {
+  headerdata.style.display= "inline-block"; 
+     f3.style.display= "inline-block"; 
+     f4.style.display= "inline-block"; 
+  container.style.display= "inline-block"; 
+  f2.style.display= "inline-block"; 
+  imgheder.style.display= "inline-block"; 
+  },2000);
+ });
+    
+ 
+
+ document.getElementById('finish2').addEventListener('click', function(){
+
+
+ });
