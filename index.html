@@ -142,10 +142,9 @@
                 if (password.value === '12345' && (username.value === 'אלי' || username.value === 'נריה')) {
                     invalidPasswordError.style.display = 'none';
                     invalidUsernameError.style.display = 'none';
-                   
+                       invalidPasswordError.style.display = 'block';
+                   invalidPasswordError.innerText='סיסמא נכונה אתם מוערים';
                     setTimeout(function() {
-                        invalidPasswordError.innerText='אתם מועברים';
-                        invalidPasswordError.style.display = 'block';
                         window.location.href = './index1.html'; // יש לשנות לכתובת של הדף הבא
                     }, 2000); // העברה לדף הבא לאחר 2 שניות
                 } else {
