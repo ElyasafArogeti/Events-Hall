@@ -139,13 +139,15 @@
             }
 
             if (isValid) {
-                if (password.value === '585155' && (username.value === 'אלי' || username.value === 'נריה')) {
+                if (password.value === '12345' && (username.value === 'אלי' || username.value === 'נריה')) {
                     invalidPasswordError.style.display = 'none';
                     invalidUsernameError.style.display = 'none';
-                    alert('אתם מועברים...');
+                   
                     setTimeout(function() {
-                        window.location.href = './index.html'; // יש לשנות לכתובת של הדף הבא
-                    }, 1000); // העברה לדף הבא לאחר 2 שניות
+                        invalidPasswordError.innerText='אתם מועברים';
+                        invalidPasswordError.style.display = 'block';
+                        window.location.href = './index1.html'; // יש לשנות לכתובת של הדף הבא
+                    }, 2000); // העברה לדף הבא לאחר 2 שניות
                 } else {
                     if (password.value !== '12345') {
                         invalidPasswordError.style.display = 'block';
