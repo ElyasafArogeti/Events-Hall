@@ -234,8 +234,8 @@ document.getElementById('finish').addEventListener('click', function() {
           totalCost += sumSalads; // הוסף לסכום הכולל
           orderSummary += `
           <tr>
-            <td>${saladName}</td>
-            <td>המחיר הכולל: ${sumSalads.toFixed(2)} ש"ח, משקל כולל לסלט: ${sumweght.toFixed(2)} ק"ג</td>
+            <td><strong>${saladName} :</strong></td>
+            <td>המחיר הכולל : <strong>${sumSalads.toFixed(2)}</strong> ש"ח   <strong>|</strong>  משקל הכולל לסלט: <strong>${sumweght.toFixed(2)}</strong> ק"ג</td>
         `;
       });
     
@@ -260,8 +260,8 @@ document.getElementById('finish').addEventListener('click', function() {
         totalCost += sumFoodPlus; // הוסף לסכום הכולל
         orderSummary += `
         <tr>
-          <td>${foodPlusName}</td>
-          <td>המחיר הכולל: ${sumFoodPlus.toFixed(2)} ש"ח, משקל כולל לתוספת: ${sumWeight.toFixed(2)} ק"ג</td>
+          <td><strong>${foodPlusName} :</strong></td>
+          <td>המחיר הכולל : <strong>${sumFoodPlus.toFixed(2)}</strong> ש"ח  <strong>|</strong>  משקל הכולל לתוספת: <strong>${sumWeight.toFixed(2)} </strong> ק"ג</td>
         </tr>
       `;
     });
@@ -302,8 +302,8 @@ document.getElementById('finish').addEventListener('click', function() {
               totalCost += sum; // הוסף לסכום הכולל
               orderSummary += `
               <tr>
-                <td>${foodName}</td>
-                <td>המחיר הכולל: ${sum.toFixed(2)} ש"ח, משקל כולל מנה ראשונה: ${weightOfPerson.toFixed(2)} גרם</td>
+                <td><strong>${foodName} :</strong></td>
+                <td>המחיר : <strong>${sum.toFixed(2)}</strong> ש"ח  <strong>|</strong> משקל הכולל למנה : <strong>${weightOfPerson.toFixed(2)} </strong> גרם</td>
               </tr>
             `;
           } else {                                        // חישוב רגיל עבור פריטים לפי יחידות
@@ -311,8 +311,8 @@ document.getElementById('finish').addEventListener('click', function() {
               totalCost += sumpersonFoodFrist; // הוסף לסכום הכולל
               orderSummary += `
               <tr>
-                <td>${foodName}</td>
-                <td>המחיר הכולל: ${sumpersonFoodFrist} ש"ח, משקל כולל מנה ראשונה: ${weight} יחידות</td>
+                <td><strong>${foodName} :</strong></td>
+                <td>המחיר : <strong>${sumpersonFoodFrist}</strong> ש"ח  <strong>|</strong> כמות פריט : <strong>${weight} </strong> יחידות</td>
               </tr>
             `;
           }
@@ -338,18 +338,27 @@ document.getElementById('finish').addEventListener('click', function() {
     </tr>
   `;                                                          // חישוב מיוחד עבור פריטים לפי גרם
     selectedItemsmain.forEach(valuefood => {
-        const foodName = valuefood.name;
+              const foodName = valuefood.name;
+      if(foodName==="כרעיים עוף ממולא"){
+        console.log("כרעיים עוף ממולא");
+        let summ=lestFoodPrice[foodName] * valuefood.value;
+        totalCost += summ; // הוסף לסכום הכולל
+        orderSummary += `
+          <tr>
+            <td><strong>${foodName} :</strong></td>
+            <td>המחיר : <strong>${summ.toFixed(2)}</strong> ש"ח <strong>|</strong> משקל הכולל למנה : <strong>${valuefood.value}</strong> יחידות</td>
+          </tr>
+        `;
+      }else{
         let sum = lestFoodPrice[foodName] * valuefood.value;
-      
-        let weightOfPersonLestFood = lestFoodWeight[foodName] * valuefood.value ;
-        console.log(weightOfPersonLestFood);
+        let weightOfPersonLestFood = lestFoodWeight[foodName] * valuefood.value ;    
         totalCost += sum; // הוסף לסכום הכולל
         orderSummary += `
           <tr>
-            <td>${foodName}</td>
-            <td>המחיר הכולל: ${sum.toFixed(2)} ש"ח, משקל כולל מנה עיקרית: ${weightOfPersonLestFood.toFixed(2)} גרם</td>
+            <td><strong>${foodName} :</strong></td>
+            <td>המחיר : <strong>${sum.toFixed(2)}</strong> ש"ח <strong>|</strong> משקל הכולל למנה : <strong>${weightOfPersonLestFood.toFixed(2)}</strong> גרם</td>
           </tr>
-        `;
+        `;}
     });
   }   
                                         // הוספת הסיכום למסמך
@@ -366,12 +375,14 @@ document.getElementById('finish').addEventListener('click', function() {
      f2.classList.add("active");                        
 });
 
-document.getElementById('finish4').addEventListener('click', function(){//לחיצה על הדפס הזמנה רגיל
+
+
+document.getElementById('finish4').addEventListener('click', function(){    //לחיצה על הדפס הזמנה רגיל
   const h2=document.querySelector("h2")
   const f2 = document.querySelector("#finish2");
   const f3 = document.querySelector("#finish3");
   const f4 = document.querySelector("#finish4");
- const imgheder = document.querySelector("#img");
+ const imgheder = document.querySelector("#imgh");
  const divdata = document.querySelector("#data-summary");
  const divOrder = document.querySelector("#Order-summary");
 setTimeout (() => {
@@ -395,12 +406,12 @@ setTimeout (() => {
   },2000);
  });
 
- document.getElementById('finish3').addEventListener('click', function(){
+ document.getElementById('finish3').addEventListener('click', function(){ // הדפס הזמנה אישי
   const f2 = document.querySelector("#finish2");
   const f3 = document.querySelector("#finish3");
   const f4 = document.querySelector("#finish4");
  const container = document.querySelector(".container");
- const imgheder=document.querySelector("#img");
+ const imgheder=document.querySelector("#imgh");
  const headerdata = document.querySelector("#header-data");
 setTimeout (() => {
   headerdata.style.display= "none"; 
@@ -423,7 +434,7 @@ setTimeout (() => {
     
  
 
- document.getElementById('finish2').addEventListener('click', function(){
+ document.getElementById('finish2').addEventListener('click', function(){ // הדפסה למטבח  
 
 
  });

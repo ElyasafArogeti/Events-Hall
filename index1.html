@@ -8,28 +8,31 @@
     
 </head>
 <body dir="rtl">
+    <br>
+    <div style="display: flex; justify-content: center;flex-direction: column; align-items: center;">
       <img src="./poto/4.png" id="imgh" style="display: inline-block;">
      <div id="header-data"> 
-    <h2>פרטי בעל ההזמנה</h2>
+    <h2 id="h2he">פרטי בעל ההזמנה</h2>
     <br/>
     <div dir="rtl" class="input-container1">
-        <input type="text" class="input-field" placeholder="שם בעל האירוע" id="event-owner" />
-        <input type="date" class="input-field" placeholder= "תאריך" id="event-date" />
-        <input type="text" class="input-field" placeholder="מספר טלפון" id="phone-number" />
+        <input type="text" class="input-field" placeholder="שם בעל האירוע :" id="event-owner"/>
+        <input type="date" class="input-field" placeholder= "תאריך :" id="event-date" />
+        <input type="text" class="input-field" placeholder="מספר טלפון :" id="phone-number" />
         <br /><br />
     </div>
     <div dir="rtl" class="input-container">
-        <input type="number" class="input-field" placeholder=" מספר מוזמנים" id="guest-count" />
-        <input list="locushn" type="text" class="input-field" placeholder="מקום האירוע" id="event-location" />
+        <input type="number" class="input-field" placeholder=" מספר מוזמנים :" id="guest-count" />
+        <input list="locushn" type="text" class="input-field" placeholder="מקום האירוע :" id="event-location" />
         <datalist id="locushn">
             <option value="הפנינה ">ביתר עלית</option>
         </datalist>
     </div>
     </div>
+    </div>
     <br />
     <div class="container">
       <div class="header">
-          <h1>תפריט אירועים</h1>
+          <h1 id="h1container">תפריט אירועים</h1>
           <h2>קייטרינג הפנינה - כשר למהדרין</h2>
           <p> פלאפון - 054-6600-200 |  מייל - eli6600200@gmail.com</p>
       </div>
@@ -71,7 +74,7 @@
                     <li><input type="checkbox" name="salads"><label for="salad18">סלט ירוק</label> </li>
                     </div>
                     <br>
-                    <button class="toggle-button" onclick="toggleSalads()"><img src="./poto/split-vertical.png" width="30px" height="30px"></button>
+                    <button class="toggle-button" onclick="toggleSalads()">הצג עוד</button>
               </td>
               <td class="section" id="tdSection">
                 <h2>מנה ראשונה [3 לבחירה]</h2>
