@@ -12,8 +12,7 @@ body {
     background-color: rgba(255, 255, 255, 0.9); /* חצי שקוף */
     box-shadow: 0 0 20px rgba(241, 202, 5, 0.272);
     border-radius: 20px;
-    border: 1px solid #ddd;
-    
+    border: 1px solid #ddd;   
  }
 h1{
     margin: 0;
@@ -24,11 +23,9 @@ h1{
   font-style:oblique;
   font-family:Georgia, 'Times New Roman', Times, serif;
     text-shadow: 0 0 3px rgba(237, 176, 10, 0.435);
-
 }
 input[class="input-field"] {
-    font-weight: bold;
-    
+    font-weight: bold;   
 }
 #h1container{
     text-shadow: 0 0 3px rgba(237, 176, 10, 0.317);
@@ -45,8 +42,6 @@ input[class="input-field"] {
     font-size: 16px;
     border-bottom: 2px solid #babab8;
     background-color:rgb(235, 234, 232);
-
-
 }
 .input-field:focus{
     border-bottom: 2px solid #999999;
@@ -138,7 +133,7 @@ td {
   cursor: pointer;  
 }
 #finish2:hover{
-    background-color: #496d8b;
+    background-color: #686d72cf;
 }
 #finish3{
     padding: 10px 20px;
@@ -152,14 +147,14 @@ td {
 }
 
 #finish3:hover{
-    background-color: #0f5895;
+    background-color:#686d72cf;
 }
 #finish4:hover{
-    background-color: #496d8b;
+    background-color:#686d72cf;
 }
 footer {
     background-color: #333;
-    color: #fff;
+    color: #ffffff;
     text-align: center;
     padding: 20px 0;
 }
