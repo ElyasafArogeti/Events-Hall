@@ -208,7 +208,7 @@ document.getElementById('finish').addEventListener('click', function() {
                  <h2 colspan="2">סיכום הזמנה</h2>
                 </tr>
   `;
-  // טיפול בבחירת הסלטים
+                                              // טיפול בבחירת הסלטים
   const salads = document.querySelectorAll('input[name="salads"]:checked');
   const foodPluses = document.querySelectorAll('input[name="FoodPlus"]:checked');
 
@@ -227,7 +227,7 @@ document.getElementById('finish').addEventListener('click', function() {
           console.log(saladsALLPrice[saladName]);
           let price = saladsALLPrice[saladName];
           let weight = saladsALLWeight[saladName];
-          // חשב את סכום הסלט לכל האורחים
+                     // חשב את סכום הסלט לכל האורחים
           let sumperson = price / 1000 * weight;
           let sumSalads = sumperson * guestCount;
           let sumweght = weight * guestCount / 1000;
@@ -378,7 +378,7 @@ document.getElementById('finish').addEventListener('click', function() {
 
 
 document.getElementById('finish4').addEventListener('click', function(){    //לחיצה על הדפס הזמנה רגיל
-  const h2=document.querySelector("h2")
+  const h2 = document.querySelector("h2")
   const f2 = document.querySelector("#finish2");
   const f3 = document.querySelector("#finish3");
   const f4 = document.querySelector("#finish4");
@@ -406,7 +406,7 @@ setTimeout (() => {
   },2000);
  });
 
- document.getElementById('finish3').addEventListener('click', function(){ // הדפס הזמנה אישי
+ document.getElementById('finish3').addEventListener('click', function(){ //חישוב  הדפס הזמנה אישי
   const f2 = document.querySelector("#finish2");
   const f3 = document.querySelector("#finish3");
   const f4 = document.querySelector("#finish4");
@@ -434,7 +434,201 @@ setTimeout (() => {
     
  
 
- document.getElementById('finish2').addEventListener('click', function(){ // הדפסה למטבח  
 
 
- });
+
+                                       // טיפול הזמנה למטבח
+ document.getElementById('finish2').addEventListener('click', function() {
+  const eventOwner = document.getElementById('event-owner').value;
+  const eventDate = document.getElementById('event-date').value;
+  const phoneNumber = document.getElementById('phone-number').value;
+  const guestCount = document.getElementById('guest-count').value;
+
+  // ניקוי הסיכום הקודם אם קיים ב-DIV החדש
+  const existingKitchenSummary = document.getElementById('kitchen-order-summary');
+  if (existingKitchenSummary) {
+      existingKitchenSummary.innerHTML = '';
+  }
+
+  let kitchenOrderSummary = `
+    <table style=
+    " max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* חצי שקוף */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    border-collapse: collapse;">
+                <tr>
+                 <h2 colspan="2">סיכום הזמנה למטבח</h2>
+                </tr>
+  `;
+           // טיפול בבחירת הסלטים
+  const salads = document.querySelectorAll('input[name="salads"]:checked');
+  const foodPluses = document.querySelectorAll('input[name="FoodPlus"]:checked');
+
+  if (salads.length > 0) {
+    kitchenOrderSummary += `
+    <tr>
+      <th colspan="4" style=" border: 1px solid black;
+    padding: 8px;
+    text-align: center;">סלטים</th>
+    </tr>
+  `;
+    salads.forEach(salad => {
+        const saladName = salad.nextElementSibling.textContent.trim();
+        let weight = saladsALLWeight[saladName];
+        let sumWeight = weight * guestCount / 1000;
+        kitchenOrderSummary += `
+        <tr>
+          <td><strong>${saladName} :</strong></td>
+          <td>משקל הכולל לסלט: <strong>${sumWeight.toFixed(2)}</strong> ק"ג</td>
+        </tr>
+      `;
+    });
+  }
+
+  // טיפול בבחירת התוספות
+  if (foodPluses.length > 0) {
+    kitchenOrderSummary += `
+    <tr>
+      <th colspan="4" style=" border: 1px solid black;
+    padding: 8px;
+    text-align: center;">תוספות</th>
+    </tr>
+  `;
+    foodPluses.forEach(foodPlus => {
+        const foodPlusName = foodPlus.nextElementSibling.textContent.trim();
+        let weight = FoodPlusWeight[foodPlusName];
+        let sumWeight = weight * guestCount / 1000;
+        kitchenOrderSummary += `
+        <tr>
+          <td><strong>${foodPlusName} :</strong></td>
+          <td>משקל הכולל לתוספת: <strong>${sumWeight.toFixed(2)}</strong> ק"ג</td>
+        </tr>
+      `;
+    });
+  }
+
+  // טיפול במנה ראשונה
+  const specialItems = ["פילה סלמון ברוטב פסטו", "כבדי עוף מוקפצים בבצל על מצע פירה", "מעורב ירושלמי במצע פירה", "מוקפץ תאילנדי ברשת או פירה", "קציצות דגים"];
+  const firstFoodItems = document.querySelectorAll('input[name="firstFood"]');
+  const selectedItems = Array.from(firstFoodItems)
+    .filter(item => item.type === 'number' && !isNaN(item.value) && item.value > 0)
+    .map(item => ({
+        id: item.id,
+        name: item.dataset.name,
+        value: parseInt(item.value),
+        price: parseFloat(item.dataset.price),
+        weight: parseFloat(item.dataset.weight)
+    }));
+
+  if (selectedItems.length > 0) {
+    kitchenOrderSummary += `
+    <tr>
+      <th colspan="2" style=" border: 1px solid black;
+    padding: 8px;
+    text-align: center;">מנה ראשונה [3 לבחירה]</th>
+    </tr>
+  `;
+    selectedItems.forEach(valuefood => {
+        const foodName = valuefood.name;
+        let weight = valuefood.value;
+        if (specialItems.includes(foodName)) {
+            let weightOfPerson = fristFoodWeight[foodName] * weight;
+            kitchenOrderSummary += `
+            <tr>
+              <td><strong>${foodName} :</strong></td>
+              <td>משקל הכולל למנה: <strong>${weightOfPerson.toFixed(2)}</strong> גרם</td>
+            </tr>
+          `;
+        } else {
+            let sumWeight = weight * guestCount / 1000;
+            kitchenOrderSummary += `
+            <tr>
+              <td><strong>${foodName} :</strong></td>
+              <td>כמות פריט: <strong>${weight}</strong> יחידות</td>
+            </tr>
+          `;
+        }
+    });
+  }
+
+  // טיפול במנה עיקרית
+  const mainFoodItems = document.querySelectorAll('input[name="mainFood"]');
+  const selectedItemsmain = Array.from(mainFoodItems)
+    .filter(item => item.type === 'number' && !isNaN(item.value) && item.value > 0)
+    .map(item => ({
+        id: item.id,
+        name: item.dataset.name,
+        value: parseInt(item.value),
+        price: parseFloat(item.dataset.price),
+        weight: parseFloat(item.dataset.weight)
+    }));
+
+  if (selectedItemsmain.length > 0) {
+    kitchenOrderSummary += `
+    <tr>
+      <th colspan="2" style=" border: 1px solid black;
+    padding: 8px;
+    text-align: center;">מנה עיקרית [3 לבחירה]</th>
+    </tr>
+  `;
+    selectedItemsmain.forEach(valuefood => {
+        const foodName = valuefood.name;
+        let weight = valuefood.value;
+        if (foodName === "כרעיים עוף ממולא") {
+            kitchenOrderSummary += `
+          <tr>
+            <td><strong>${foodName} :</strong></td>
+            <td>משקל הכולל למנה: <strong>${weight}</strong> יחידות</td>
+          </tr>
+        `;
+        } else {
+            let sumWeight = lestFoodWeight[foodName] * weight / 1000;
+            kitchenOrderSummary += `
+          <tr>
+            <td><strong>${foodName} :</strong></td>
+            <td>משקל הכולל למנה: <strong>${sumWeight.toFixed(2)}</strong> ק"ג</td>
+          </tr>
+        `;
+        }
+    });
+  }
+
+  kitchenOrderSummary += `</table>`;
+
+  const kitchenSummaryDiv = document.querySelector("#kitchen-order-summary");
+  kitchenSummaryDiv.innerHTML = kitchenOrderSummary;
+  const h2 = document.querySelector("h2")
+  const f2 = document.querySelector("#finish2");
+  const f3 = document.querySelector("#finish3");
+  const f4 = document.querySelector("#finish4");
+ const imgheder = document.querySelector("#imgh");
+ const divdata = document.querySelector("#data-summary");
+ const divOrder = document.querySelector("#Order-summary");
+ const container = document.querySelector(".container");
+setTimeout (() => {
+  container.style.display= "none"; 
+  h2.style.display= "none"; 
+  f3.style.display= "none"; 
+  f4.style.display= "none"; 
+f2.style.display= "none"; 
+imgheder.style.display= "none";
+divdata.style.display= "none";
+divOrder.style.display= "none";
+window.print();
+},1000);
+setTimeout (() => {
+  container.style.display= "block"; 
+  h2.style.display= "block"; 
+  divdata.style.display= "block";
+  divOrder.style.display= "block";
+     f3.style.display= "block"; 
+     f4.style.display= "block"; 
+  f2.style.display= "block"; 
+  imgheder.style.display= "inline-block"; 
+  },2000);
+
+});
