@@ -385,7 +385,11 @@ document.getElementById('finish4').addEventListener('click', function(){    //ל
  const imgheder = document.querySelector("#imgh");
  const divdata = document.querySelector("#data-summary");
  const divOrder = document.querySelector("#Order-summary");
+ const container = document.querySelector(".container");
+ const headerdata = document.querySelector("#header-data");
 setTimeout (() => {
+  container.style.display= "block"; 
+  headerdata.style.display= "block"; 
   h2.style.display= "none"; 
   f3.style.display= "none"; 
   f4.style.display= "none"; 
@@ -396,6 +400,7 @@ divOrder.style.display= "none";
 window.print();
 },1000);
 setTimeout (() => {
+  headerdata.style.display= "inline-block"; 
   h2.style.display= "block"; 
   divdata.style.display= "block";
   divOrder.style.display= "block";
@@ -433,6 +438,16 @@ setTimeout (() => {
  });
     
  
+
+
+
+
+
+
+
+
+
+
 
 
 

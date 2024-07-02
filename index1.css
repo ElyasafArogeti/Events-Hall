@@ -126,6 +126,7 @@ td {
   border: none;
   cursor: pointer;  
 }
+
 #finish2{
     padding: 10px 20px;
   font-size: 20px;
@@ -136,15 +137,25 @@ td {
   border: none;
   cursor: pointer;  
 }
+#finish2:hover{
+    background-color: #496d8b;
+}
 #finish3{
     padding: 10px 20px;
   font-size: 20px;
   width: 50%;
   border-radius: 5px;
-  background-color: #61676eaf;
+   background-color: #3e6694ef;
   color: #fff;
   border: none;
   cursor: pointer;  
+}
+
+#finish3:hover{
+    background-color: #0f5895;
+}
+#finish4:hover{
+    background-color: #496d8b;
 }
 footer {
     background-color: #333;
