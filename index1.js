@@ -168,27 +168,30 @@ const FoodPlusWeight = {// משקל תוספות
 "פירה":100,
 "אפונה וגזר":70  
 }
-function toggleSalads() {
+
+const dateInput = document.getElementById('event-date'); // למלאות את תיבת תאריך 
+  dateInput.placeholder = 'תאריך :';
+
+
+function toggleSalads() {   // טיפול בסלטים שלא נראים
   var saladList = document.getElementById('salad-list');
   saladList.classList.toggle('hidden');
 }
 
+// -----------------------------------סיכום הזמנה---------------------------------------------------------------------------------
 document.getElementById('finish').addEventListener('click', function() {
-                                                                         // ניקוי הסיכום הקודם אם קיים
-  const existingSummary = document.getElementById('order-summary');
+                                                                        
+  const existingSummary = document.getElementById('order-summary'); // ניקוי הסיכום הקודם אם קיים
   if (existingSummary) {
       existingSummary.remove();
   }
-
   const eventOwner = document.getElementById('event-owner').value;
   const eventDate = document.getElementById('event-date').value;
   const phoneNumber = document.getElementById('phone-number').value;
-  const guestCount = document.getElementById('guest-count').value;
-  // הגדרת משתנים לסכום כולל ולסיכום ההזמנה
+  const guestCount = document.getElementById('guest-count').value;                     
   let totalCost = 0;
 
-
- let dataSummary=`<h2>פרטי בעל האירוע</h2>
+ let dataSummary=`<h2> פרטי בעל האירוע:</h2>
                       <p>שם בעל האירוע :   <strong>${eventOwner}</strong></p>
                       <p>תאריך האירוע :  <strong> ${eventDate}</strong></p>
                       <p>מספר טלפון :  <strong> ${phoneNumber}</strong></p>
@@ -208,10 +211,10 @@ document.getElementById('finish').addEventListener('click', function() {
                  <h2 colspan="2">סיכום הזמנה</h2>
                 </tr>
   `;
-                                              // טיפול בבחירת הסלטים
+  // -----------------------------------   // טיפול בבחירת הסלטים---------------------------------------------------------------------------------
+                                           
   const salads = document.querySelectorAll('input[name="salads"]:checked');
   const foodPluses = document.querySelectorAll('input[name="FoodPlus"]:checked');
-
 
   if (salads.length > 0) {            // לסלטים
     orderSummary += `
@@ -238,10 +241,9 @@ document.getElementById('finish').addEventListener('click', function() {
             <td>המחיר הכולל : <strong>${sumSalads.toFixed(2)}</strong> ש"ח   <strong>|</strong>  משקל הכולל לסלט: <strong>${sumweght.toFixed(2)}</strong> ק"ג</td>
         `;
       });
-    
   }
-  
-                                  // טיפול בבחירת התוספות
+  // --------------------------------// טיפול בבחירת התוספות------------------------------------------------------------------------------------
+                                      
   if (foodPluses.length > 0) {
     orderSummary += `
     <tr>
@@ -266,8 +268,8 @@ document.getElementById('finish').addEventListener('click', function() {
       `;
     });
   }
-
-                                           // טיפול במנה ראשונה 
+// ------------------------------------ // טיפול במנה ראשונה --------------------------------------------------------------------------------
+                                           
   const firstFoodItems = document.querySelectorAll('input[name="firstFood"]');
 
   
@@ -317,8 +319,9 @@ document.getElementById('finish').addEventListener('click', function() {
             `;
           }
       });
-  }     
-                                     // מנה עיקרית 
+  } 
+  // -------------------------------- // מנה עיקרית ------------------------------------------------------------------------------------    
+                                    
   const mainFoodItems = document.querySelectorAll('input[name="mainFood"]');
   const selectedItemsmain = Array.from(mainFoodItems)                // מערך של כל הפריטים שנבחרו 
     .filter(item => item.type === 'number' && !isNaN(item.value) && item.value > 0)
@@ -375,22 +378,26 @@ document.getElementById('finish').addEventListener('click', function() {
      f2.classList.add("active");                        
 });
 
-
-
-document.getElementById('finish4').addEventListener('click', function(){    //לחיצה על הדפס הזמנה רגיל
+// ----------------------------------- //לחיצה על הדפס הזמנה רגיל---------------------------------------------------------------------------------
+                                           
+document.getElementById('finish4').addEventListener('click', function(){   
   const h2 = document.querySelector("h2")
   const f2 = document.querySelector("#finish2");
   const f3 = document.querySelector("#finish3");
   const f4 = document.querySelector("#finish4");
+  const f = document.querySelector("#finish");
  const imgheder = document.querySelector("#imgh");
  const divdata = document.querySelector("#data-summary");
  const divOrder = document.querySelector("#Order-summary");
  const container = document.querySelector(".container");
  const headerdata = document.querySelector("#header-data");
+ const footer = document.querySelector("footer");
 setTimeout (() => {
+  footer.style.display= "none"; 
   container.style.display= "block"; 
   headerdata.style.display= "block"; 
   h2.style.display= "none"; 
+  f.style.display= "none"; 
   f3.style.display= "none"; 
   f4.style.display= "none"; 
 f2.style.display= "none"; 
@@ -400,8 +407,10 @@ divOrder.style.display= "none";
 window.print();
 },1000);
 setTimeout (() => {
+  footer.style.display= "block"; 
   headerdata.style.display= "inline-block"; 
   h2.style.display= "block"; 
+  f.style.display= "inline-block"; 
   divdata.style.display= "block";
   divOrder.style.display= "block";
      f3.style.display= "block"; 
@@ -411,15 +420,20 @@ setTimeout (() => {
   },2000);
  });
 
- document.getElementById('finish3').addEventListener('click', function(){ //חישוב  הדפס הזמנה אישי
+// ---------------------------------//חישוב  הדפס הזמנה אישי-----------------------------------------------------------------------------------
+ 
+document.getElementById('finish3').addEventListener('click', function(){ 
   const f2 = document.querySelector("#finish2");
   const f3 = document.querySelector("#finish3");
   const f4 = document.querySelector("#finish4");
  const container = document.querySelector(".container");
  const imgheder=document.querySelector("#imgh");
  const headerdata = document.querySelector("#header-data");
+ const footer = document.querySelector("footer");
+
 setTimeout (() => {
   headerdata.style.display= "none"; 
+  footer.style.display= "none"; 
 container.style.display= "none"; 
   f3.style.display= "none"; 
   f4.style.display= "none"; 
@@ -429,6 +443,7 @@ window.print();
 },1000);
 setTimeout (() => {
   headerdata.style.display= "inline-block"; 
+  footer.style.display= "block"; 
      f3.style.display= "inline-block"; 
      f4.style.display= "inline-block"; 
   container.style.display= "inline-block"; 
@@ -437,34 +452,17 @@ setTimeout (() => {
   },2000);
  });
     
- 
 
+// --------------------------------------------------------------------------------------------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-                                       // טיפול הזמנה למטבח
+                                                       // טיפול הזמנה למטבח
  document.getElementById('finish2').addEventListener('click', function() {
-  const eventOwner = document.getElementById('event-owner').value;
-  const eventDate = document.getElementById('event-date').value;
-  const phoneNumber = document.getElementById('phone-number').value;
   const guestCount = document.getElementById('guest-count').value;
-
-  // ניקוי הסיכום הקודם אם קיים ב-DIV החדש
+                           // ניקוי הסיכום הקודם אם קיים ב-DIV החדש
   const existingKitchenSummary = document.getElementById('kitchen-order-summary');
   if (existingKitchenSummary) {
       existingKitchenSummary.innerHTML = '';
   }
-
   let kitchenOrderSummary = `
     <table style=
     " max-width: 900px;
@@ -482,7 +480,6 @@ setTimeout (() => {
            // טיפול בבחירת הסלטים
   const salads = document.querySelectorAll('input[name="salads"]:checked');
   const foodPluses = document.querySelectorAll('input[name="FoodPlus"]:checked');
-
   if (salads.length > 0) {
     kitchenOrderSummary += `
     <tr>
@@ -503,7 +500,6 @@ setTimeout (() => {
       `;
     });
   }
-
   // טיפול בבחירת התוספות
   if (foodPluses.length > 0) {
     kitchenOrderSummary += `
@@ -525,7 +521,6 @@ setTimeout (() => {
       `;
     });
   }
-
   // טיפול במנה ראשונה
   const specialItems = ["פילה סלמון ברוטב פסטו", "כבדי עוף מוקפצים בבצל על מצע פירה", "מעורב ירושלמי במצע פירה", "מוקפץ תאילנדי ברשת או פירה", "קציצות דגים"];
   const firstFoodItems = document.querySelectorAll('input[name="firstFood"]');
@@ -569,8 +564,7 @@ setTimeout (() => {
         }
     });
   }
-
-  // טיפול במנה עיקרית
+                      // טיפול במנה עיקרית
   const mainFoodItems = document.querySelectorAll('input[name="mainFood"]');
   const selectedItemsmain = Array.from(mainFoodItems)
     .filter(item => item.type === 'number' && !isNaN(item.value) && item.value > 0)
@@ -611,9 +605,7 @@ setTimeout (() => {
         }
     });
   }
-
   kitchenOrderSummary += `</table>`;
-
   const kitchenSummaryDiv = document.querySelector("#kitchen-order-summary");
   kitchenSummaryDiv.innerHTML = kitchenOrderSummary;
   const h2 = document.querySelector("h2")
@@ -624,8 +616,10 @@ setTimeout (() => {
  const divdata = document.querySelector("#data-summary");
  const divOrder = document.querySelector("#Order-summary");
  const container = document.querySelector(".container");
+ const footer = document.querySelector("footer");
 setTimeout (() => {
   container.style.display= "none"; 
+  footer.style.display= "none"; 
   h2.style.display= "none"; 
   f3.style.display= "none"; 
   f4.style.display= "none"; 
@@ -637,6 +631,7 @@ window.print();
 },1000);
 setTimeout (() => {
   container.style.display= "block"; 
+  footer.style.display= "block"; 
   h2.style.display= "block"; 
   divdata.style.display= "block";
   divOrder.style.display= "block";
@@ -645,5 +640,4 @@ setTimeout (() => {
   f2.style.display= "block"; 
   imgheder.style.display= "inline-block"; 
   },2000);
-
 });
