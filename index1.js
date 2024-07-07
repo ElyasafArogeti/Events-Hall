@@ -375,7 +375,9 @@ document.getElementById('finish').addEventListener('click', function() {
     const f4 = document.querySelector("#finish4");    // הצגת הכפתורי המשך
      f4.classList.add("active");  
      const f2 = document.querySelector("#finish2");
-     f2.classList.add("active");                        
+     f2.classList.add("active"); 
+     sendWhatsappBtn = document.getElementById('send-whatsapp'); 
+    sendWhatsappBtn.classList.add("active");                 
 });
 
 // ----------------------------------- //לחיצה על הדפס הזמנה רגיל---------------------------------------------------------------------------------
@@ -640,4 +642,56 @@ setTimeout (() => {
   f2.style.display= "block"; 
   imgheder.style.display= "inline-block"; 
   },2000);
+});
+
+
+// ---------------------------------שליחה לוואצאפ-----------------------------------------------------------------------------------
+
+document.getElementById('send-whatsapp').addEventListener('click', function() {
+  const eventOwner = document.getElementById('event-owner').value;
+  const eventDate = document.getElementById('event-date').value;
+  const phoneNumber = document.getElementById('phone-number').value;
+  const guestCount = document.getElementById('guest-count').value;
+  
+  let message = `פרטי בעל האירוע:\n
+  שם בעל האירוע: ${eventOwner}\n
+  תאריך האירוע: ${eventDate}\n
+  מספר טלפון: ${phoneNumber}\n
+  מספר המוזמנים: ${guestCount}\n\n
+  סיכום הזמנה:\n`;
+
+  const salads = document.querySelectorAll('input[name="salads"]:checked');
+  salads.forEach(salad => {
+    const saladName = salad.nextElementSibling.textContent.trim();
+    let weight = saladsALLWeight[saladName] * guestCount / 1000;
+    message += `${saladName}: ${weight.toFixed(2)} ק"ג\n`;
+  });
+
+  const foodPluses = document.querySelectorAll('input[name="FoodPlus"]:checked');
+  foodPluses.forEach(foodPlus => {
+    const foodPlusName = foodPlus.nextElementSibling.textContent.trim();
+    let weight = FoodPlusWeight[foodPlusName] * guestCount / 1000;
+    message += `${foodPlusName}: ${weight.toFixed(2)} ק"ג\n`;
+  });
+
+  const firstFoodItems = document.querySelectorAll('input[name="firstFood"]');
+  firstFoodItems.forEach(food => {
+    if (food.type === 'number' && !isNaN(food.value) && food.value > 0) {
+      const foodName = food.dataset.name;
+      const weight = parseFloat(food.dataset.weight) * guestCount / 1000;
+      message += `${foodName}: ${weight.toFixed(2)} ק"ג\n`;
+    }
+  });
+
+  const mainFoodItems = document.querySelectorAll('input[name="mainFood"]');
+  mainFoodItems.forEach(food => {
+    if (food.type === 'number' && !isNaN(food.value) && food.value > 0) {
+      const foodName = food.dataset.name;
+      const weight = parseFloat(food.dataset.weight) * guestCount / 1000;
+      message += `${foodName}: ${weight.toFixed(2)} ק"ג\n`;
+    }
+  });
+
+  const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+  window.open(whatsappUrl, '_blank');
 });
