@@ -650,13 +650,12 @@ document.getElementById('send-whatsapp').addEventListener('click', function() {
   const eventDate = document.getElementById('event-date').value;
   const phoneNumber = document.getElementById('phone-number').value;
   const guestCount = document.getElementById('guest-count').value;
-
+  
   let message = `פרטי בעל האירוע:\n
   שם בעל האירוע: ${eventOwner}\n
   תאריך האירוע: ${eventDate}\n
   מספר טלפון: ${phoneNumber}\n
-  מספר המוזמנים: ${guestCount}\n\n
-  סיכום הזמנה:\n`;
+  מספר המוזמנים: ${guestCount}\n`;
 
   const salads = document.querySelectorAll('input[name="salads"]:checked');
   salads.forEach(salad => {
@@ -676,8 +675,8 @@ document.getElementById('send-whatsapp').addEventListener('click', function() {
   firstFoodItems.forEach(food => {
     if (food.type === 'number' && !isNaN(food.value) && food.value > 0) {
       const foodName = food.dataset.name;
-      const weight = parseFloat(food.dataset.weight) * guestCount / 1000;
-      message += `${foodName}: ${weight.toFixed(2)} ק"ג\n`;
+      const weight = food.value;
+      message += `${foodName}: ${weight} ק"ג\n`;
     }
   });
 
@@ -685,24 +684,11 @@ document.getElementById('send-whatsapp').addEventListener('click', function() {
   mainFoodItems.forEach(food => {
     if (food.type === 'number' && !isNaN(food.value) && food.value > 0) {
       const foodName = food.dataset.name;
-      const weight = parseFloat(food.dataset.weight) * guestCount / 1000;
-      message += `${foodName}: ${weight.toFixed(2)} ק"ג\n`;
+      const weight = food.value;
+      message += `${foodName}: ${weight} ק"ג\n`;
     }
   });
 
-  const originalContent = document.body.innerHTML;
-  const printContent = `
-    <div id="print-content">
-      <h2>סיכום הזמנה</h2>
-      <p>${message.replace(/\n/g, '<br>')}</p>
-    </div>
-  `;
-  
-  document.body.innerHTML = printContent;
-  
-  const printHTML = document.getElementById('print-content').innerHTML;
-  document.body.innerHTML = originalContent;
-
-  const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(printHTML)}`;
+  const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
   window.open(whatsappUrl, '_blank');
 });
