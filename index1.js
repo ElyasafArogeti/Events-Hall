@@ -170,8 +170,8 @@ const FoodPlusWeight = {// משקל תוספות
 }
 
 const dateInput = document.getElementById('event-date'); // למלאות את תיבת תאריך 
-  dateInput.placeholder = 'תאריך :';
-
+  dateInput.innerText='תאריך :';
+  dateInput.style.display="inline-block";
 
 function toggleSalads() {   // טיפול בסלטים שלא נראים
   var saladList = document.getElementById('salad-list');
@@ -460,7 +460,7 @@ setTimeout (() => {
                                                        // טיפול הזמנה למטבח
  document.getElementById('finish2').addEventListener('click', function() {
   const guestCount = document.getElementById('guest-count').value;
-                           // ניקוי הסיכום הקודם אם קיים ב-DIV החדש
+                                  // ניקוי הסיכום הקודם אם קיים ב-DIV החדש
   const existingKitchenSummary = document.getElementById('kitchen-order-summary');
   if (existingKitchenSummary) {
       existingKitchenSummary.innerHTML = '';
@@ -502,7 +502,7 @@ setTimeout (() => {
       `;
     });
   }
-  // טיפול בבחירת התוספות
+                                   // טיפול בבחירת התוספות
   if (foodPluses.length > 0) {
     kitchenOrderSummary += `
     <tr>
@@ -577,7 +577,6 @@ setTimeout (() => {
         price: parseFloat(item.dataset.price),
         weight: parseFloat(item.dataset.weight)
     }));
-
   if (selectedItemsmain.length > 0) {
     kitchenOrderSummary += `
     <tr>
@@ -594,8 +593,7 @@ setTimeout (() => {
           <tr>
             <td><strong>${foodName} :</strong></td>
             <td>משקל הכולל למנה: <strong>${weight}</strong> יחידות</td>
-          </tr>
-        `;
+          </tr>`;
         } else {
             let sumWeight = lestFoodWeight[foodName] * weight / 1000;
             kitchenOrderSummary += `
@@ -652,7 +650,7 @@ document.getElementById('send-whatsapp').addEventListener('click', function() {
   const eventDate = document.getElementById('event-date').value;
   const phoneNumber = document.getElementById('phone-number').value;
   const guestCount = document.getElementById('guest-count').value;
-  
+
   let message = `פרטי בעל האירוע:\n
   שם בעל האירוע: ${eventOwner}\n
   תאריך האירוע: ${eventDate}\n
@@ -692,6 +690,19 @@ document.getElementById('send-whatsapp').addEventListener('click', function() {
     }
   });
 
-  const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+  const originalContent = document.body.innerHTML;
+  const printContent = `
+    <div id="print-content">
+      <h2>סיכום הזמנה</h2>
+      <p>${message.replace(/\n/g, '<br>')}</p>
+    </div>
+  `;
+  
+  document.body.innerHTML = printContent;
+  
+  const printHTML = document.getElementById('print-content').innerHTML;
+  document.body.innerHTML = originalContent;
+
+  const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(printHTML)}`;
   window.open(whatsappUrl, '_blank');
 });
