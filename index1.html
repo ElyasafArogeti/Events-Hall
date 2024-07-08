@@ -16,15 +16,16 @@
     <br/>
     <div dir="rtl" class="input-container1">
         <input type="text" class="input-field" placeholder="שם בעל האירוע :" id="event-owner"/>
-        <input type="date" class="input-field" placeholder= "תאריך :" id="event-date" />
-        <input type="text" class="input-field" placeholder="מספר טלפון :" id="phone-number" />
+        <input type="date" class="input-field" placeholder= "" id="event-date"/>
+        <span class="placeholder">תאריך :</span>
+        <input type="number" class="input-field" placeholder="מספר טלפון :" id="phone-number" />
         <br /><br />
     </div>
     <div dir="rtl" class="input-container">
         <input type="number" class="input-field" placeholder=" מספר מוזמנים :" id="guest-count" />
         <input list="locushn" type="text" class="input-field" placeholder="מקום האירוע :" id="event-location" />
         <datalist id="locushn">
-            <option value="הפנינה ">ביתר עלית</option>
+            <option value="הפנינה">ביתר עלית</option>
         </datalist>
     </div>
     </div>
@@ -39,7 +40,7 @@
       <table>
           <tr>
               <td class="section" id="tdSection">
-                  <h2>סלטים [8 לבחירה]</h2>
+                  <h2>סלטים [8 לבחירה] <span class="counter-salads"></span></h2>
                   <ul class="salads-list">
                     <li><input type="checkbox"name="salads" id="salad1" >  <label for="salad1">גזר מרוקאי חי</label>    </li>
                     <li><input type="checkbox"name="salads" id="salad2" > <label for="salad2">גזר מרוקאי מבושל</label> </li>

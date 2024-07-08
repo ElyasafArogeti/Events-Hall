@@ -34,6 +34,23 @@ input[class="input-field"] {
   display: contents;
   padding: 20px;
 }
+
+
+ .placeholder {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #aaa;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+.input-field:focus + .placeholder,
+.input-field:not(:placeholder-shown) + .placeholder {
+  visibility: hidden;
+  opacity: 0;
+}
+
 .input-field {
     padding: 10px;
     margin-right: 10px;
@@ -113,6 +130,7 @@ td {
 }
 #finish{
     width: 50%;
+   
     background-color: #205791;
     border: 0;
     border-radius: 56px;
@@ -149,7 +167,10 @@ td {
     transform: scale(1.05);
   }
 
+  
 #finish2{
+  max-width: 500px;
+  width: 50%;
   background-color: #4c5053;
   border: 0;
   border-radius: 56px;
@@ -188,6 +209,8 @@ td {
 
 
 #finish3{
+  max-width: 500px;
+  width: 50%;
     background-color: #2070ad;
     border: 0;
     border-radius: 56px;
@@ -225,6 +248,8 @@ td {
   }
 
 #finish4{
+  max-width: 500px;
+  width: 50%;
     background-color: #81868a;
     border: 0;
     border-radius: 56px;
@@ -262,6 +287,8 @@ td {
   }
 
 #send-whatsapp{
+  max-width: 500px;
+  width: 50%;
     background-color: #108a31b9;
     border: 0;
     border-radius: 56px;
@@ -298,7 +325,9 @@ td {
     transform: scale(1.05);
   }
 
+
 footer {
+  font-size: 20px;
     background-color: #333;
     color: #ffffff;
     text-align: center;
@@ -310,7 +339,6 @@ footer {
     outline: none;
     border-bottom: 2px solid #ccc;
 }
-
 .dataTabke {
     max-width: 900px;
     margin: 20px auto;

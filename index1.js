@@ -377,7 +377,7 @@ document.getElementById('finish').addEventListener('click', function() {
      const f2 = document.querySelector("#finish2");
      f2.classList.add("active"); 
      sendWhatsappBtn = document.getElementById('send-whatsapp'); 
-    sendWhatsappBtn.classList.add("active");                 
+    sendWhatsappBtn.classList.add("active");  
 });
 
 // ----------------------------------- //לחיצה על הדפס הזמנה רגיל---------------------------------------------------------------------------------
@@ -457,7 +457,7 @@ setTimeout (() => {
 
 // --------------------------------------------------------------------------------------------------------------------
 
-                                                       // טיפול הזמנה למטבח
+                                // טיפול הזמנה למטבח
  document.getElementById('finish2').addEventListener('click', function() {
   const guestCount = document.getElementById('guest-count').value;
                                   // ניקוי הסיכום הקודם אם קיים ב-DIV החדש
@@ -479,7 +479,7 @@ setTimeout (() => {
                  <h2 colspan="2">סיכום הזמנה למטבח</h2>
                 </tr>
   `;
-           // טיפול בבחירת הסלטים
+                        // טיפול בבחירת הסלטים
   const salads = document.querySelectorAll('input[name="salads"]:checked');
   const foodPluses = document.querySelectorAll('input[name="FoodPlus"]:checked');
   if (salads.length > 0) {
@@ -523,7 +523,7 @@ setTimeout (() => {
       `;
     });
   }
-  // טיפול במנה ראשונה
+                              // טיפול במנה ראשונה
   const specialItems = ["פילה סלמון ברוטב פסטו", "כבדי עוף מוקפצים בבצל על מצע פירה", "מעורב ירושלמי במצע פירה", "מוקפץ תאילנדי ברשת או פירה", "קציצות דגים"];
   const firstFoodItems = document.querySelectorAll('input[name="firstFood"]');
   const selectedItems = Array.from(firstFoodItems)
@@ -692,3 +692,71 @@ document.getElementById('send-whatsapp').addEventListener('click', function() {
   const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
   window.open(whatsappUrl, '_blank');
 });
+
+
+
+// ---------טיפול לתיבת תאריך-------------------------------------------------------------------
+
+document.addEventListener('DOMContentLoaded', function () {
+  const dateInput = document.getElementById('event-date');
+  const placeholder = document.querySelector('.placeholder');
+  
+  if (dateInput.value) {
+    placeholder.style.visibility = 'hidden';
+    placeholder.style.opacity = 0;
+  }
+  
+  dateInput.addEventListener('input', function () {
+    if (this.value) {
+      placeholder.style.visibility = 'hidden';
+      placeholder.style.opacity = 0;
+    } else {
+      placeholder.style.visibility = 'visible';
+      placeholder.style.opacity = 1;
+    }
+  });
+});
+
+// ---------------------------------מונה לסלטים שנבחרו -----------------------------------------------------------------
+document.addEventListener('DOMContentLoaded', () => {
+  // שמירת כל תיבות הסימון של הסלטים
+  const saladCheckboxes = document.querySelectorAll('input[name="salads"]');
+  // שמירת אלמנט המונה של הסלטים
+  const saladCounter = document.querySelector('.counter-salads');
+
+  // פונקציה לעדכון מונה הסלטים
+  const updateSaladCounter = () => {
+    // ספירת מספר תיבות הסימון המסומנות
+    const selectedCount = Array.from(saladCheckboxes).filter(checkbox => checkbox.checked).length;
+    // עדכון טקסט המונה אם נבחר לפחות סלט אחד
+    if (selectedCount > 0) {
+      saladCounter.textContent = `נבחרו : ${selectedCount} `;
+     
+   
+      saladCounter.style.fontWeight= 'bolder';
+    } else {
+      saladCounter.textContent = '';
+    }
+  };
+
+  // הוספת מאזיני אירועים לכל תיבות הסימון
+  saladCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', updateSaladCounter);
+  });
+
+  // אתחול המונה בעת טעינת הדף
+  updateSaladCounter();
+
+  // עדכון המונה בכל שניה
+  setInterval(updateSaladCounter, 1000);
+});
+
+// פונקציה להצגת והסתרת רשימת הסלטים הנוספת
+function toggleSalads() {
+  const saladList = document.getElementById('salad-list');
+  saladList.classList.toggle('hidden');
+}
+
+// --------------------------------------------------------------------------------
+
+
